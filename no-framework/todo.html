@@ -6,9 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
-    <title>First Bulma Example</title>
+    <title>MR First Bulma Example</title>
 </head>
 <body >
+
+  <!--Top Nav -->
  <nav class="navbar is-primary">
   <div class="navbar-brand">
     <a class="navbar-item" href="https://bulma.io">
@@ -83,6 +85,8 @@
     </div>
   </div>
 </nav>
+
+<!-- Left side column -->
 <div class="section">
   <div class="container">
     <div class="columns">
@@ -112,6 +116,110 @@
     <a href="#" class="card-footer-item">Delete</a>
   </footer>
 </div>
+</div>
+
+<!-- Tabs Middle -->
+
+<div class="column is-half">
+  <article class="panel">
+<div class="tabs is-boxed">
+  <ul>
+    <li class="is-active">
+      <a>
+        <span class="icon is-small"><i class="fas fa-clipboard-list" aria-hidden="true"></i></span>
+        <span>Current</span>
+      </a>
+    </li>
+    <li>
+      <a>
+        <span class="icon is-small"><i class="fas fa-calendar-times" aria-hidden="true"></i></span>
+        <span>Completed</span>
+      </a>
+    </li>
+    <li>
+      <a>
+        <span class="icon is-small"><i class="fas fa-calendar-day" aria-hidden="true"></i></span>
+        <span>Upcoming</span>
+      </a>
+    </li>
+    <li>
+      <a>
+        <span class="icon is-small"><i class="far fa-Calendar" aria-hidden="true"></i></span>
+        <span>All</span>
+      </a>
+    </li>
+  </ul>
+</div>
+<div class="panel-block">
+  <p class="control has-icons-left">
+    <input class="input is-primary" type="text" placeholder="New Task">
+    <span class="icon is-left">
+      <i class="fas fa-calendar-plus" aria-hidden="true"></i>
+    </span>
+  </p>
+</div>
+<a class="panel-block">
+    <input type="checkbox" checked />
+    Make Bulma great again
+</a>
+<a class="panel-block">
+    <input type="checkbox" />
+    Add some more features
+</a>
+<a class="panel-block">
+    <input type="checkbox" />
+    Make a github account
+</a>
+<a class="panel-block">
+    <input type="checkbox" />
+    Learn how to use github
+</a>
+<a class="panel-block">
+    <input type="checkbox" />
+    add a .gitignore file
+</a>
+</article>
+
+<!-- Right side MENU -->
+<div class="column is-one-quarter">
+  <h2 class="title">Table of contents</h2>
+  <h3 class="subtitle">Intra-page navigation</h3>
+<aside class="menu">
+  <p class="menu-label">
+    General
+  </p>
+  <ul class="menu-list">
+    <li><a>Dashboard</a></li>
+    <li><a>Customers</a></li>
+  </ul>
+  <p class="menu-label">
+    Administration
+  </p>
+  <ul class="menu-list">
+    <li><a>Team Settings</a></li>
+    <li>
+      <a class="is-active">Manage Your Team</a>
+      <ul>
+        <li><a>Members</a></li>
+        <li><a>Plugins</a></li>
+        <li><a>Add a member</a></li>
+      </ul>
+    </li>
+    <li><a>Invitations</a></li>
+    <li><a>Cloud Storage Environment Settings</a></li>
+    <li><a>Authentication</a></li>
+  </ul>
+  <p class="menu-label">
+    Transactions
+  </p>
+  <ul class="menu-list">
+    <li><a>Payments</a></li>
+    <li><a>Transfers</a></li>
+    <li><a>Balance</a></li>
+  </ul>
+</aside>
+
+
 </div>
 </body>
 </html>
