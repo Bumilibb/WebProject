@@ -46,5 +46,23 @@
 </template>
 
 <style scoped>
+ .is-primary.input, .is-primary.textarea {
+    border-color: pink;
+}
 
+.button.is-primary.is-hovered, .button.is-primary:hover {
+    background-color: rgb(200, 93, 150);
+    border-color: transparent;
+    color: #fff;
+}
+
+.button.is-primary {
+    background-color: rgb(223, 145, 158);
+    border-color: transparent;
+    color: #fff;
+} 
+
+.has-text-primary {
+    color: rgb(200, 93, 150)!important;
+}
 </style>
