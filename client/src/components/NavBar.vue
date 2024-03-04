@@ -31,12 +31,16 @@ function toggleMenu() {
         My Activity
       </RouterLink>
 
-      <RouterLink to="/Activity" class="navbar-item">
+      <RouterLink to="/Statistics" class="navbar-item">
         Statistics
       </RouterLink>
 
-      <RouterLink to="/Activity" class="navbar-item">
+      <RouterLink to="/FriendActivity" class="navbar-item">
         Friends Activity
+      </RouterLink>
+
+      <RouterLink to="/Search" class="navbar-item">
+        People Search
       </RouterLink>
 
       <div class="navbar-item has-dropdown is-hoverable">
@@ -48,16 +52,16 @@ function toggleMenu() {
           <RouterLink to="/user" class="navbar-item">
             User
           </RouterLink>
-          <a class="navbar-item">
+          <RouterLink to="/Settings" class="navbar-item">
             Settings
-          </a>
-          <a class="navbar-item">
+          </RouterLink>
+          <RouterLink to="/Contact" class="navbar-item">
             Contact
-          </a>
+          </RouterLink>
           <hr class="navbar-divider">
-          <a class="navbar-item">
+          <RouterLink to="/issue" class="navbar-item">
             Report an issue
-          </a>
+          </RouterLink>
         </div>
       </div>
     </div>
@@ -65,16 +69,15 @@ function toggleMenu() {
     <div class="navbar-end">
       <div class="navbar-item">
         <div class="buttons">
-          <a class="button is-white">
-            <RouterLink to="/signup" class="navbar-item"> 
+          
+            <RouterLink to="/signup" class="navbar-item button is-white"> 
               <strong>Sign up</strong>
             </RouterLink>
-          </a>
-          <a class="button is-white">
-          <RouterLink to="/login" class="navbar-item">
+          
+            <RouterLink to="/login" class="navbar-item button is-white">
             Log in
           </RouterLink>
-        </a>
+      
         </div>
       </div>
     </div>
@@ -84,12 +87,8 @@ function toggleMenu() {
 
 <style scoped>
 
-    .router-link-exact-active {
-        border-bottom: 2px solid rgb(207, 198, 243);
-    }
     .navbar-item {
-        color: black;
+      color: black;
     }
-   
 
-</style>
+  </style>
