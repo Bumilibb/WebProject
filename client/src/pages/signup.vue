@@ -13,9 +13,9 @@
 
     <body>
         <div class="container">
-            <div class="columns">
-                <div class="column is-5">
-                    <div class="columns is-flex is-flex-direction-column">
+            <div class="hero is-fullheight">
+            <div class="hero-body is-justify-content-center is-align-items-center">
+                    <div class="columns is-flex is-flex-direction-column box">
                         <div class="column">
                             <label for="name">Name</label>
                             <input class="input is-primary" type="text" placeholder="Enter Name">

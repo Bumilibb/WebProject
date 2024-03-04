@@ -28,20 +28,28 @@ function toggleMenu() {
     <div class="navbar-start">
 
       <RouterLink to="/Activity" class="navbar-item">
-        Activity
+        My Activity
+      </RouterLink>
+
+      <RouterLink to="/Activity" class="navbar-item">
+        Statistics
+      </RouterLink>
+
+      <RouterLink to="/Activity" class="navbar-item">
+        Friends Activity
       </RouterLink>
 
       <div class="navbar-item has-dropdown is-hoverable">
         <a class="navbar-link">
-          More
+          Admin
         </a>
 
         <div class="navbar-dropdown">
-          <RouterLink to="/about" class="navbar-item">
-            About
+          <RouterLink to="/user" class="navbar-item">
+            User
           </RouterLink>
           <a class="navbar-item">
-            Jobs
+            Settings
           </a>
           <a class="navbar-item">
             Contact
