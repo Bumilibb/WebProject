@@ -11,10 +11,10 @@ function toggleMenu() {
 </script>
 
 <template>
-<nav class="navbar" role="navigation" aria-label="main navigation">
+<nav class="navbar is-warning" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
     <a class="navbar-item" href="/">
-      <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="22" height="22" />
+      <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="30" height="28" />
     </a>
 
     <a role="button"  @click="toggleMenu" :class="{ 'is-active': isActive } " class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -57,14 +57,16 @@ function toggleMenu() {
     <div class="navbar-end">
       <div class="navbar-item">
         <div class="buttons">
-          <a class="button is-primary">
+          <a class="button is-white">
             <RouterLink to="/signup" class="navbar-item"> 
               <strong>Sign up</strong>
             </RouterLink>
           </a>
+          <a class="button is-white">
           <RouterLink to="/login" class="navbar-item">
             Log in
           </RouterLink>
+        </a>
         </div>
       </div>
     </div>
@@ -75,9 +77,11 @@ function toggleMenu() {
 <style scoped>
 
     .router-link-exact-active {
-        border-bottom: 2px solid #3f00d1;
+        border-bottom: 2px solid rgb(207, 198, 243);
     }
-
-  
+    .navbar-item {
+        color: black;
+    }
+   
 
 </style>
