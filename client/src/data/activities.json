@@ -1,0 +1,29 @@
+{
+    "items": [
+      {
+        "title": "Morning Run",
+        "date": "03/04/2024",
+        "duration_minutes": 30,
+        "location": "Central Park",
+        "activity_type": "Running",
+        "distance_miles": 3.5
+      },
+      {
+        "title": "Evening Yoga",
+        "date": "03/04/2024",
+        "duration_minutes": 45,
+        "location": "Downtown Studio",
+        "activity_type": "Yoga",
+        "distance_miles": 0
+      },
+      {
+        "title": "Afternoon Bike Ride",
+        "date": "03/05/2024",
+        "duration_minutes": 60,
+        "location": "River Trail",
+        "activity_type": "Cycling",
+        "distance_miles": 15
+      }
+    ]
+  }
+  

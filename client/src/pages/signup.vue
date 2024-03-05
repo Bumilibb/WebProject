@@ -1,4 +1,9 @@
 <script setup lang="ts">
+import { ref } from 'vue'
+
+const email = ref('')
+const password = ref('')
+const name = ref('')
 
 </script>
 
@@ -17,19 +22,28 @@
             <div class="hero-body is-justify-content-center is-align-items-center">
                     <div class="columns is-flex is-flex-direction-column box">
                         <div class="column">
+                            <form @SubmitEvent.prevent="">
+
                             <label for="name">Name</label>
-                            <input class="input is-primary" type="text" placeholder="Enter Name">
+                            <input class="input is-primary" type="name" v-model="name" placeholder="Enter Name">
+                            
+                            </form>
                         </div>
                         <div class="column">
+                            <form @SubmitEvent.prevent="">
+
                             <label for="email">Email</label>
-                            <input class="input is-primary" type="text" placeholder="Email address">
+                            <input class="input is-primary" type="email" v-model="email" placeholder="email@test.com">
+                            </form>
                         </div>
                         <div class="column">
+                            <form @SubmitEvent.prevent="">
+
                             <label for="Name">Password</label>
-                            <input class="input is-primary" type="password" placeholder="Password">
+                            <input class="input is-primary" type="password" v-model="password" placeholder="Password">
                             <input type="checkbox">
                             I agree to the <a href="#" class="has-text-primary">terms and conditions</a>
-                           
+                           </form>
                         </div>
                         <div class="column">
                             <button class="button is-primary is-fullwidth" type="submit">Create an account</button>

@@ -1,4 +1,9 @@
 <script setup lang="ts">
+import { ref } from 'vue'
+
+const email = ref('')
+const password = ref('')
+
 </script>
 
 <template>
@@ -6,7 +11,6 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Bulma CSS Login Page</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     </head>
 
@@ -15,12 +19,29 @@
             <div class="hero-body is-justify-content-center is-align-items-center">
                 <div class="columns is-flex is-flex-direction-column box">
                     <div class="column">
-                        <label for="email">Email</label>
-                        <input class="input is-primary" type="text" placeholder="Email address">
+
+                    <form @SubmitEvent.prevent="">
+                        
+                        <label for="email">
+                          <span>Email</span>
+                        </label>
+
+                        <input class="input is-primary" type="email" v-model="email" placeholder="email@test.com">
+
+                    </form>
                     </div>
+
                     <div class="column">
-                        <label for="Name">Password</label>
-                        <input class="input is-primary" type="password" placeholder="Password">
+
+                        <form @SubmitEvent.prevent="">
+
+                        <label for="Name">
+                            <span>Password</span>
+                        </label>
+                        
+                        <input class="input is-primary" type="password" v-model="password" placeholder="Password">
+                    </form>
+
                         <a href="forget.html" class="is-size-7 has-text-primary">forget password?</a>
                     </div>
                     <div class="column">

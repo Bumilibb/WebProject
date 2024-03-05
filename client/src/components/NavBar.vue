@@ -66,7 +66,7 @@ function toggleLoginDropdown() {
             Contact
           </RouterLink>
           <hr class="navbar-divider">
-          <RouterLink to="/issue" class="navbar-item">
+          <RouterLink to="/Report" class="navbar-item">
             Report an issue
           </RouterLink>
         </div>
