@@ -1,18 +1,65 @@
 <script setup lang="ts">
-import type { User } from '@/model/users';
-import profilePictures from '@/components/PhotoList.vue';
 import { ref, type PropType, computed } from 'vue';
-import user from './user.vue';
+import { type User, getUsers } from "@/model/users";
 
+const search = ref('')
+const users = ref([] as User[])
+users.value = getUsers()
+
+const filteredUsers = computed(() => {
+  return users.value.filter(user => {
+    const searchTerm = search.value.toLowerCase();
+    return (
+    //  user.username.toLowerCase().includes(searchTerm) ||
+      user.firstName.toLowerCase().includes(searchTerm) 
+     // user.lastName.toLowerCase().includes(searchTerm) ||
+    //  user.email.toLowerCase().includes(searchTerm)
+    );
+  });
+});
 </script>
 
 <template>
-  <input placeholder="Search">
-    
+  <form @submit.prevent="">
+    <label for="search">
+      <span>Search</span>
+    </label>
+    <input class="input is-primary" type="search" v-model="search" placeholder="Search">
+  </form>
 
-  
+  <div class="user-list">
+    <div v-for="user in filteredUsers" :key="user.id" class="card">
+      <div class="card-image">
+        <img :src="user.image" :alt="user.username" />
+      </div>
+      <div class="card-content">
+        <h3>{{ user.firstName }}</h3>
+        <p>{{ user.email }}</p>
+      </div>
+    </div>
+  </div>
 </template>
 
 <style scoped>
-  
+.card {
+  border-radius: 1rem;
+  box-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, 0.1), 0 0px 0 1px rgba(10, 10, 10, 0.02);
+  color: #4a4a4a;
+  max-width: 22%;
+  display: inline-table;
+  flex-basis: 15rem;
+  flex-grow: 1;
+  margin: 0.5rem;
+}
+
+h3 {
+  font-weight: bold;
+}
+
+img {
+  width: 200px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 1rem 1rem 0 0;
+}
 </style>

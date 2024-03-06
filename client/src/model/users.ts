@@ -6,6 +6,7 @@ export interface Hair {
 }
 
 export interface User {
+  id: number;
   firstName: string;
   lastName: string;
   maidenName: string;
@@ -24,6 +25,6 @@ export interface User {
   hair: Hair;
 }
 
-export function getActivity(): User[] {
+export function getUsers(): User[] {
   return user.users;
 }
