@@ -1,4 +1,5 @@
 import user from '@/data/users.json';
+import { ref } from 'vue';
 
 export interface Hair {
   color: string;
@@ -27,4 +28,14 @@ export interface User {
 
 export function getUsers(): User[] {
   return user.users;
+}
+
+export function useUser() {
+  const users = ref([] as User[])
+  users.value = getUsers()
+
+  let isLoggedIn = ref(false);
+  let currentUser = ref(null as User | null);
+
+  return { isLoggedIn, currentUser };
 }

@@ -1,22 +1,38 @@
 <script setup lang="ts">
 import { ref, type PropType, computed } from 'vue';
 import { type User, getUsers } from "@/model/users";
+import { type Root, getData } from "@/model/useractivity";
+import { useRoute, useRouter } from 'vue-router'
 
 const search = ref('')
 const users = ref([] as User[])
 users.value = getUsers()
 
+const usersact = ref([] as Root[])
+usersact.value = getData()
+
 const filteredUsers = computed(() => {
   return users.value.filter(user => {
     const searchTerm = search.value.toLowerCase();
     return (
-    //  user.username.toLowerCase().includes(searchTerm) ||
-      user.firstName.toLowerCase().includes(searchTerm) 
-     // user.lastName.toLowerCase().includes(searchTerm) ||
-    //  user.email.toLowerCase().includes(searchTerm)
+    // user.username.toLowerCase().includes(searchTerm) ||
+       user.firstName.toLowerCase().includes(searchTerm) 
+    // user.lastName.toLowerCase().includes(searchTerm) ||
+    // user.email.toLowerCase().includes(searchTerm)
     );
   });
 });
+
+const router = useRouter()
+
+const openUserProfile = (user: User) => {
+  router.push({ name: 'user', params: { id: user.id } })
+    .catch(error => {
+      // Handle the error here
+      console.error(error);
+    });
+}
+
 </script>
 
 <template>
@@ -29,7 +45,7 @@ const filteredUsers = computed(() => {
 
   <div class="user-list">
     <div v-for="user in filteredUsers" :key="user.id" class="card">
-      <div class="card-image">
+      <div class="card-image" @click="openUserProfile(user)">
         <img :src="user.image" :alt="user.username" />
       </div>
       <div class="card-content">
@@ -50,6 +66,7 @@ const filteredUsers = computed(() => {
   flex-basis: 15rem;
   flex-grow: 1;
   margin: 0.5rem;
+  margin-top: 50px;
 }
 
 h3 {
@@ -74,8 +91,9 @@ img {
 
 form {
     display:inherit;
-    margin-top: 0em;
-
+    margin-top: 50px;
+    width: 500px;
+   
 }
 
 

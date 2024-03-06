@@ -1,4 +1,4 @@
-import user from '@/data/useractivity.json';
+import useractivity from '@/data/useractivity.json';
 
 export interface PersonalData {
   firstName: string;
@@ -16,7 +16,6 @@ export interface PersonalData {
 }
 
 export interface Activity {
-  numDaysAgo: number;
   type: string;
   wasDifficult: boolean;
   avgHeartRate: number;
@@ -27,9 +26,7 @@ export interface Activity {
   durationInMinutes: number;
   location: string;
   notes: string;
-  numOfComments: number;
-  numOfLikes: number;
-  comments?: Comment[];
+  
 }
 
 export interface Comment {
@@ -38,19 +35,15 @@ export interface Comment {
   comment: string;
   isLookingForReplyFromAuthor: boolean;
   numOfLikes: number;
+  likedBy: number[];
 }
 
-export interface User {
+export interface Root {
   personalData: PersonalData;
   isAdmin: string;
   id: number;
 }
 
-export interface UsersData {
-  users: User[];
-}
-
-
-export function getUsers(): User[] {
-  return user.users;
+export function getData(): Root[] {
+  return useractivity.usersact;
 }
