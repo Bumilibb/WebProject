@@ -22,7 +22,7 @@ const filteredUsers = computed(() => {
 <template>
   <form @submit.prevent="">
     <label for="search">
-      <span>Search</span>
+    <span> Search </span>
     </label>
     <input class="input is-primary" type="search" v-model="search" placeholder="Search">
   </form>
@@ -62,4 +62,21 @@ img {
   object-fit: cover;
   border-radius: 1rem 1rem 0 0;
 }
+
+.is-primary.input:focus, .is-primary.textarea:focus, .is-primary.is-focused.input, .is-primary.is-focused.textarea, .is-primary.input:active, .is-primary.textarea:active, .is-primary.is-active.input, .is-primary.is-active.textarea {
+    box-shadow: 0 0 0 0.125em rgb(250, 210, 242);
+    
+}
+.is-primary.input, .is-primary.textarea {
+    border-color: lightgray;
+    
+}
+
+form {
+    display:inherit;
+    margin-top: 0em;
+
+}
+
+
 </style>
