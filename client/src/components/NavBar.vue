@@ -46,7 +46,7 @@ function toggleLoginDropdown() {
         Friends Activity
       </RouterLink>
 
-      <RouterLink to="/Search" class="navbar-item fa fa-search" style="margin-top: 10px;">
+      <RouterLink to="/peopleSearch" class="navbar-item fa fa-search" style="margin-top: 10px;">
         People Search
       </RouterLink>
 
