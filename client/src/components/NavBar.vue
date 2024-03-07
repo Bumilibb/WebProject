@@ -1,52 +1,74 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router';
+import { ref } from 'vue';
 
+let isActive = ref(false);
+let isLoginDropdownActive = ref(false);
+
+function toggleMenu() {
+  isActive.value = !isActive.value;
+}
+
+function toggleLoginDropdown() {
+  isLoginDropdownActive.value = !isLoginDropdownActive.value;
+}
 
 </script>
 
 <template>
-<nav class="navbar" role="navigation" aria-label="main navigation">
-  <div class="navbar-brand">
-    <a class="navbar-item" href="https://bulma.io">
-      <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="22" height="22" />
+<nav class="navbar is-warning " role="navigation" aria-label="main navigation" >
+  <div class="navbar-brand" >
+    <a class="navbar-item" href="/">
+      <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="30" height="28" />
     </a>
 
-    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+    <a role="button"  @click="toggleMenu" :class="{ 'is-active': isActive } " class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample" >
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>
     </a>
   </div>
 
-  <div id="navbarBasicExample" class="navbar-menu">
+  <div :class="{ 'is-active': isActive } " id="navbarBasicExample" class="navbar-menu" >
     <div class="navbar-start">
-      <RouterLink to="/" class="navbar-item">
-        Home
+
+    
+     
+      <RouterLink to="/Activity" class="navbar-item fas fa-running" style="margin-top: 10px;">
+        My Activity
+      </RouterLink>
+      
+      <RouterLink to="/Statistics" class="navbar-item fas fa-chart-line" style="margin-top: 10px;">
+        Statistics
       </RouterLink>
 
-      <a class="navbar-item">
-        Documentation
-      </a>
+      <RouterLink to="/FriendActivity" class="navbar-item fas fa-users" style="margin-top: 10px;">
+        Friends Activity
+      </RouterLink>
 
-      <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link">
-          More
+      <RouterLink to="/search" class="navbar-item fa fa-search" style="margin-top: 10px;">
+        People Search
+      </RouterLink>
+
+      <div class="navbar-item has-dropdown is-hoverable ">
+        <a class="navbar-link fa fa-user-circle" style="margin-top: 10px;">
+          Admin
         </a>
 
         <div class="navbar-dropdown">
-          <RouterLink to="/about" class="navbar-item">
-            About
+          <RouterLink to="/user" class="navbar-item fa fa-user">
+            User
           </RouterLink>
-          <a class="navbar-item">
-            Jobs
-          </a>
-          <a class="navbar-item">
+          <RouterLink to="/Settings" class="navbar-item fa fa-cog">
+            Settings
+          </RouterLink>
+          <RouterLink to="/Contact" class="navbar-item fa fa-phone">
             Contact
-          </a>
+          </RouterLink>
           <hr class="navbar-divider">
-          <a class="navbar-item">
+          <RouterLink to="/Report" class="navbar-item">
             Report an issue
-          </a>
+          </RouterLink>
         </div>
       </div>
     </div>
@@ -54,12 +76,30 @@ import { RouterLink } from 'vue-router';
     <div class="navbar-end">
       <div class="navbar-item">
         <div class="buttons">
-          <a class="button is-primary">
-            <strong>Sign up</strong>
-          </a>
-          <a class="button is-light">
-            Log in
-          </a>
+   
+            <a role="button" @click="toggleLoginDropdown" :class="{ 'is-active': isLoginDropdownActive }" class="navbar-item button ">
+              Log in
+              <div class="navbar-dropdown">
+                <RouterLink to="/account1" class="navbar-item">
+                  Account 1
+                </RouterLink>
+                <RouterLink to="/account2" class="navbar-item ">
+                  Account 2
+                </RouterLink>
+                <RouterLink to="/account3" class="navbar-item">
+                  Account 3
+                </RouterLink>
+                <hr class="navbar-divider">
+                <RouterLink to="/login" class="navbar-item fa fa-user-o">
+                  Other Account
+                </RouterLink>
+              </div>
+            </a>
+          
+            <RouterLink to="/signup" class="navbar-item button is-white"> 
+              <strong>Sign up</strong>
+            </RouterLink>
+          
         </div>
       </div>
     </div>
@@ -69,12 +109,8 @@ import { RouterLink } from 'vue-router';
 
 <style scoped>
 
-    .router-link-exact-active {
-        border-bottom: 2px solid #00d1b2;
+    .navbar-item {
+      color: black;
     }
 
-    .router-link-active {
-        background-color: aquamarine;
-    }
-
-</style>
+  </style>

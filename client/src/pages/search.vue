@@ -1,0 +1,100 @@
+<script setup lang="ts">
+import { ref, type PropType, computed } from 'vue';
+import { type User, getUsers } from "@/model/users";
+import { type Root, getData } from "@/model/useractivity";
+import { useRoute, useRouter } from 'vue-router'
+
+const search = ref('')
+const users = ref([] as User[])
+users.value = getUsers()
+
+const usersact = ref([] as Root[])
+usersact.value = getData()
+
+const filteredUsers = computed(() => {
+  return users.value.filter(user => {
+    const searchTerm = search.value.toLowerCase();
+    return (
+    // user.username.toLowerCase().includes(searchTerm) ||
+       user.firstName.toLowerCase().includes(searchTerm) 
+    // user.lastName.toLowerCase().includes(searchTerm) ||
+    // user.email.toLowerCase().includes(searchTerm)
+    );
+  });
+});
+
+const router = useRouter()
+
+const openUserProfile = (user: User) => {
+  router.push({ name: 'user', params: { id: user.id } })
+    .catch(error => {
+      // Handle the error here
+      console.error(error);
+    });
+}
+
+</script>
+
+<template>
+  <form @submit.prevent="">
+    <label for="search">
+    <span> Search </span>
+    </label>
+    <input class="input is-primary" type="search" v-model="search" placeholder="Search">
+  </form>
+
+  <div class="user-list">
+    <div v-for="user in filteredUsers" :key="user.id" class="card">
+      <div class="card-image" @click="openUserProfile(user)">
+        <img :src="user.image" :alt="user.username" />
+      </div>
+      <div class="card-content">
+        <h3>{{ user.firstName }}</h3>
+        <p>{{ user.email }}</p>
+      </div>
+    </div>
+  </div>
+</template>
+
+<style scoped>
+.card {
+  border-radius: 1rem;
+  box-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, 0.1), 0 0px 0 1px rgba(10, 10, 10, 0.02);
+  color: #4a4a4a;
+  max-width: 22%;
+  display: inline-table;
+  flex-basis: 15rem;
+  flex-grow: 1;
+  margin: 0.5rem;
+  margin-top: 50px;
+}
+
+h3 {
+  font-weight: bold;
+}
+
+img {
+  width: 200px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 1rem 1rem 0 0;
+}
+
+.is-primary.input:focus, .is-primary.textarea:focus, .is-primary.is-focused.input, .is-primary.is-focused.textarea, .is-primary.input:active, .is-primary.textarea:active, .is-primary.is-active.input, .is-primary.is-active.textarea {
+    box-shadow: 0 0 0 0.125em rgb(250, 210, 242);
+    
+}
+.is-primary.input, .is-primary.textarea {
+    border-color: lightgray;
+    
+}
+
+form {
+    display:inherit;
+    margin-top: 50px;
+    width: 500px;
+   
+}
+
+
+</style>
