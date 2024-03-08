@@ -36,10 +36,7 @@ const openUserProfile = (user: User) => {
 
 <template>
   <form @submit.prevent="">
-    <label for="search">
-    <span> Search </span>
-    </label>
-    <input class="input is-primary" type="search" v-model="search" placeholder="Search">
+    <input class="input is-primary fa fa-search" type="search" v-model="search" placeholder="Search" >
   </form>
 
   <div class="user-list">
@@ -56,6 +53,7 @@ const openUserProfile = (user: User) => {
 </template>
 
 <style scoped>
+
 .card {
   border-radius: 1rem;
   box-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, 0.1), 0 0px 0 1px rgba(10, 10, 10, 0.02);
@@ -104,7 +102,17 @@ img {
 
 form {
   display: inherit;
-  margin-top: 50px;
-  width: 500px;
+  margin-top: 20px;
+  width: auto;
+  padding-left: auto;
+}
+
+.input, .textarea {
+  border-radius: 0.5rem;
+  border: 1px solid lightgray;
+  padding: 0.5rem;
+  margin: 0.5rem;
+  padding-left: auto;
+  text-align: center;
 }
 </style>

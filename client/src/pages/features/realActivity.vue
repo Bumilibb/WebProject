@@ -1,11 +1,29 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, type PropType, computed } from 'vue';
 import { type User, getUsers } from "@/model/users";
+import { type Root, getData } from "@/model/useractivity";
+import { type Activity, getActivity } from "@/model/activities";
+import { useRoute, useRouter } from 'vue-router'
 
-const users = ref([] as User[]);
-users.value = getUsers();
+const users = ref([] as User[])
+users.value = getUsers()
+
+const usersact = ref([] as Root[])
+usersact.value = getData()
+
+const activity = ref([] as Activity[])
+activity.value = getActivity()
 
 const showModal = ref(false);
+const title = ref('');
+const date = ref('');
+const duration = ref('');
+const location = ref('');
+const picture = ref('');
+const type = ref('');
+const search = ref('')
+
+const workouts = ref([]);
 
 const openModal = () => {
   showModal.value = true;
@@ -14,12 +32,30 @@ const openModal = () => {
 const closeModal = () => {
   showModal.value = false;
 };
+
+const deleteCard = (index) => {
+  workouts.value.splice(index, 1);
+};
+
+const addWorkout = (event) => {
+  event.preventDefault();
+  workouts.value.push({
+    title: title.value,
+    date: date.value,
+    duration: duration.value,
+    location: location.value,
+    picture: picture.value,
+    type: type.value
+  });
+  closeModal();
+};
 </script>
 
 <template>
   <div class="columns is-centered">
     <div class="column is-half">
       <button class="button is-primary" @click="openModal">Add Workout</button>
+
       <div v-if="showModal" class="modal is-active">
         <div class="modal-background"></div>
         <div class="modal-card">
@@ -83,78 +119,56 @@ const closeModal = () => {
           </section>
           <footer class="modal-card-foot">
             <button class="button is-success" @click="closeModal">Save changes</button>
+            <button class="button" @click="closeModal">Cancel</button>
           </footer>
         </div>
       </div>
-    </div>
-  </div>
 
-  <div class="columns is-centered">
-    <div class="box" style="display: flex; justify-content: center;">
-      <article class="media">
-        <div class="media-left">
-          <figure class="image is-64x64">
-            <img src="https://bulma.io/images/placeholders/128x128.png" alt="Image">
-          </figure>
-        </div>
-        <div class="media-content">
-          <div class="content">
-            <p>
-              <strong>Moshe Plotkin</strong> <small>@JewPaltz</small> <small>2 hr ago</small>
-              <br>
-              Biked through campus - { "lat": 41.7459793, "lng": -74.082801 }
-              <br>
-              <span class="label">Distance:</span> 1.0 mi
-              <br>
-              <span class="label">Duration:</span> 0:30
-            </p>
+      <div class="block" v-for="(workout, index) in workouts" :key="index">
+        <div class="card">
+          <button class="delete is-small" style="position: absolute; right: 10px; top: 10px;" @click="deleteCard(index)"></button>
+          <div class="box">
+            <article class="media">
+              <div class="media-content">
+                <div class="content">
+                  <p class="image is-64x64">
+                    <img src="https://bulma.io/images/placeholders/128x128.png">
+                  </p>
+                  <p>
+                    <strong>{{ workout.title }}</strong> <small>@johnsmith</small> <small>{{ workout.date }}</small>
+                    <br>
+                    {{ workout.type }} for {{ workout.duration }} at {{ workout.location }}
+                    </p>
+                </div>
+                <nav class="level is-mobile">
+                  <div class="level-left">
+                    <a class="level-item" aria-label="reply">
+                      <span class="icon is-small">
+                        <i class="fas fa-reply" aria-hidden="true"></i>
+                      </span>
+                    </a>
+                    <a class="level-item" aria-label="retweet">
+                      <span class="icon is-small">
+                        <i class="fas fa-retweet" aria-hidden="true"></i>
+                      </span>
+                    </a>
+                    <a class="level-item" aria-label="like">
+                      <span class="icon is-small">
+                        <i class="fas fa-heart" aria-hidden="true"></i>
+                      </span>
+                    </a>
+                  </div>
+                </nav>
+              </div>
+            </article>
           </div>
-          <nav class="level is-mobile">
-            <div class="level-left">
-              <a class="level-item" aria-label="reply">
-                <span class="icon is-small">
-                  <i class="fas fa-reply" aria-hidden="true"></i>
-                </span>
-              </a>
-              <a class="level-item" aria-label="retweet">
-                <span class="icon is-small">
-                  <i class="fas fa-retweet" aria-hidden="true"></i>
-                </span>
-              </a>
-              <a class="level-item" aria-label="like">
-                <span class="icon is-small">
-                  <i class="fas fa-heart" aria-hidden="true"></i>
-                </span>
-              </a>
-            </div>
-          </nav>
         </div>
-        <div class="media-right">
-          <button class="delete" @click="removeUser(selectedUser.value)"></button>
-        </div>
-      </article>
+      </div>
     </div>
   </div>
 </template>
 
 <style scoped>
-
-.box-list {
-        margin-top: 50px;
-        background-color: white;
-        border-radius: 0.5rem;
-        box-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, 0.1), 0 0px 0 1px rgba(10, 10, 10, 0.02);
-        color: #4a4a4a;
-        display: block;
-        padding: 0.75rem;
-        width: 50%;
-    }
-
-
-.label {
-    font-weight: bold;
-}
-
 @media (min-width: 1024px) {
   .Myactivity {
     min-height: 100vh;
@@ -164,14 +178,10 @@ const closeModal = () => {
 }
 
 .button {
-  border-radius: 0.5rem;
   background-color: rgb(232, 146, 160);
   border-color: #dbdbdb;
   color: #ffffff;
   margin-top: 20px;
-  padding: 10px 280px;
-  padding-right: 45%;
-  padding-left: 40%;
 }
 
 .button.is-primary.is-hovered,
@@ -180,6 +190,4 @@ const closeModal = () => {
   border-color: transparent;
   color: #fff;
 }
-
 </style>
-
