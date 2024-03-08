@@ -21,6 +21,7 @@
         selectedUser.value = null
         isModalOpen.value = false
     }
+    
 </script>
 
 <template>   
@@ -37,7 +38,7 @@
             <th>Last Name</th>
             <th>Emails</th>
             <th>Username</th>
-            <th>ID</th>
+            <th>Age</th>
             <th></th>
           </tr>
         </thead>
@@ -48,7 +49,7 @@
             <td>{{ user.lastName }}</td>
             <td>{{ user.email }}</td>
             <td>{{ user.username }}</td>
-            <td>{{ user.id }}</td>
+            <td>{{ user.age }}</td>
             <td>
               <button class="button" @click="editUser(user)">
                 <i class="fas fa-edit"></i> 
@@ -73,10 +74,17 @@
       </header>
       <section class="modal-card-body">
         <p>Selected User: {{ selectedUser?.firstName }} {{ selectedUser?.lastName }}</p>
-        <!-- Add your form or inputs here -->
+        <div v-if="selectedUser">
+          <input v-model="selectedUser.firstName" type="text" placeholder="First Name">
+          <input v-model="selectedUser.lastName" type="text" placeholder="Last Name">
+          <input v-model="selectedUser.email" type="email" placeholder="Email">
+          <input v-model="selectedUser.username" type="text" placeholder="Username">
+          <input v-model="selectedUser.age" type="number" placeholder="Age">
+        </div>
       </section>
       <footer class="modal-card-foot">
-        <!-- Add your modal footer content here -->
+        <button class="button is-success" @click="closeModal">Save changes</button>
+        <button class="button" @click="closeModal">Cancel</button>
       </footer>
     </div>
   </div>

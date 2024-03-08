@@ -22,6 +22,7 @@ const name = ref('')
             <div class="hero-body is-justify-content-center is-align-items-center">
                     <div class="columns is-flex is-flex-direction-column box">
                         <div class="column">
+                            <h1 class="title is-3 has-text-centered has-text-primary">Sign up!</h1> <!-- Signup headline -->
                             <form @SubmitEvent.prevent="">
 
                             <label for="name">Name</label>
@@ -79,4 +80,5 @@ const name = ref('')
 .has-text-primary {
     color: rgb(200, 93, 150)!important;
 }
+
 </style>

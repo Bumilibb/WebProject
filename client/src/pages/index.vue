@@ -1,23 +1,42 @@
 <script setup lang="ts">
 
-
 </script>
 
 <template>
-   
+    <section class="hero is-fullheight">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title is-1">Welcome to Fitness Tracker</h1>
+                <h2 class="subtitle is-3">Track your fitness journey with ease</h2>
+                <RouterLink to="/login" class="login " style="margin-top: 10px;">
+                    <button class="button is-primary is-rounded" >Get Started</button>
+                </RouterLink>
+            </div>
+        </div>
+    </section>
 </template>
 
-
-  <!-- ... -->
-  <tr v-for="user in users" :key="user.id">
-    <td><img class="user-image" :src="user.image"></td>
-    <!-- ... -->
-  </tr>
-  <!-- ... -->
-</template>
+<script setup lang="ts">
+</script>
 
 <style scoped>
-  /* ... */
-  .user-image {
-    width: 50px; /* Adjust the width as needed */
-  }
+.hero {
+    background-image: url('/path/to/fitness-background.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.button {
+  background-color: rgb(232, 146, 160);
+  border-color: #dbdbdb;
+  color: #ffffff;
+  margin-top: 20px;
+}
+
+.button.is-primary.is-hovered,
+.button.is-primary:hover {
+  background-color: rgb(200, 93, 150);
+  border-color: transparent;
+  color: #fff;
+}
+</style>

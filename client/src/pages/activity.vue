@@ -118,7 +118,7 @@ const addWorkout = (event) => {
             </form>
           </section>
           <footer class="modal-card-foot">
-            <button class="button is-success" @click="addWorkout">Save changes</button>
+            <button class="button is-success" @click="closeModal">Save changes</button>
             <button class="button" @click="closeModal">Cancel</button>
           </footer>
         </div>

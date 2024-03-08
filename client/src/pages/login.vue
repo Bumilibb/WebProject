@@ -19,29 +19,22 @@ const password = ref('')
             <div class="hero-body is-justify-content-center is-align-items-center">
                 <div class="columns is-flex is-flex-direction-column box">
                     <div class="column">
-
-                    <form @SubmitEvent.prevent="">
-                        
-                        <label for="email">
-                          <span>Email</span>
-                        </label>
-
-                        <input class="input is-primary" type="email" v-model="email" placeholder="email@test.com">
-
-                    </form>
+                        <h1 class="title is-3 has-text-centered has-text-primary">Login</h1>
+                        <form @SubmitEvent.prevent="">
+                            <label for="email">
+                                <span>Email</span>
+                            </label>
+                            <input class="input is-primary" type="email" v-model="email" placeholder="email@test.com">
+                        </form>
                     </div>
 
                     <div class="column">
-
                         <form @SubmitEvent.prevent="">
-
-                        <label for="Name">
-                            <span>Password</span>
-                        </label>
-                        
-                        <input class="input is-primary" type="password" v-model="password" placeholder="Password">
-                    </form>
-
+                            <label for="Name">
+                                <span>Password</span>
+                            </label>
+                            <input class="input is-primary" type="password" v-model="password" placeholder="Password">
+                        </form>
                         <a href="forget.html" class="is-size-7 has-text-primary">forget password?</a>
                     </div>
                     <div class="column">

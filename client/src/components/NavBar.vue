@@ -59,12 +59,6 @@ function toggleLoginDropdown() {
           <RouterLink to="/user" class="navbar-item fa fa-user">
             User
           </RouterLink>
-          <RouterLink to="/Settings" class="navbar-item fa fa-cog">
-            Settings
-          </RouterLink>
-          <RouterLink to="/Contact" class="navbar-item fa fa-phone">
-            Contact
-          </RouterLink>
           <hr class="navbar-divider">
           <RouterLink to="/Report" class="navbar-item">
             Report an issue
