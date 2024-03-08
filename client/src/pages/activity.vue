@@ -14,6 +14,9 @@ const openModal = () => {
 const closeModal = () => {
   showModal.value = false;
 };
+function removeUser(user: User){
+        users.value = users.value.filter(u => u.id !== user.id);
+    }
 </script>
 
 <template>
@@ -130,7 +133,7 @@ const closeModal = () => {
           </nav>
         </div>
         <div class="media-right">
-          <button class="delete" @click="removeUser(selectedUser.value)"></button>
+          <button class="delete" @click="removeUser(user)"></button>
         </div>
       </article>
     </div>
