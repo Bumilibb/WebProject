@@ -63,8 +63,25 @@
     </div>
   </div>
 
-  
-  </template>
+  <!-- BEGIN: Modal Card -->
+  <div class="modal" v-if="isModalOpen">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Edit User</p>
+        <button class="delete" aria-label="close" @click="closeModal"></button>
+      </header>
+      <section class="modal-card-body">
+        <p>Selected User: {{ selectedUser?.firstName }} {{ selectedUser?.lastName }}</p>
+        <!-- Add your form or inputs here -->
+      </section>
+      <footer class="modal-card-foot">
+        <!-- Add your modal footer content here -->
+      </footer>
+    </div>
+  </div>
+  <!-- END: Modal Card -->
+</template>
 
 <style scoped>
   .table {
