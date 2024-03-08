@@ -28,7 +28,6 @@ const router = useRouter()
 const openUserProfile = (user: User) => {
   router.push({ name: 'user', params: { id: user.id } })
     .catch(error => {
-      // Handle the error here
       console.error(error);
     });
 }
@@ -46,7 +45,7 @@ const openUserProfile = (user: User) => {
   <div class="user-list">
     <div v-for="user in filteredUsers" :key="user.id" class="card">
       <div class="card-image" @click="openUserProfile(user)">
-        <img :src="user.image" :alt="user.username" />
+        <img class="user-image-is-small" :src="user.image" :alt="user.username" />
       </div>
       <div class="card-content">
         <h3>{{ user.firstName }}</h3>
@@ -76,7 +75,7 @@ h3 {
 img {
   width: 200px;
   height: 120px;
-  object-fit: cover;
+  object-fit: fit;
   border-radius: 1rem 1rem 0 0;
 }
 
