@@ -1,15 +1,11 @@
 <script setup lang="ts">
 import { ref, type PropType, computed } from 'vue';
 import { type User, getUsers } from "@/model/users";
-import { type Root, getData } from "@/model/useractivity";
 import { useRoute, useRouter } from 'vue-router'
 
 const search = ref('')
 const users = ref([] as User[])
 users.value = getUsers()
-
-const usersact = ref([] as Root[])
-usersact.value = getData()
 
 const filteredUsers = computed(() => {
   return users.value.filter(user => {

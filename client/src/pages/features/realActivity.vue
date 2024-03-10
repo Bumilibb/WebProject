@@ -1,18 +1,10 @@
 <script setup lang="ts">
 import { ref, type PropType, computed } from 'vue';
 import { type User, getUsers } from "@/model/users";
-import { type Root, getData } from "@/model/useractivity";
-import { type Activity, getActivity } from "@/model/activities";
 import { useRoute, useRouter } from 'vue-router'
 
 const users = ref([] as User[])
 users.value = getUsers()
-
-const usersact = ref([] as Root[])
-usersact.value = getData()
-
-const activity = ref([] as Activity[])
-activity.value = getActivity()
 
 const showModal = ref(false);
 const title = ref('');
