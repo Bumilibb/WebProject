@@ -27,20 +27,5 @@ const router = createRouter({
   routes: routes
 })
 
-router.beforeEach(async (to, from, next) => {
-  if(to.matched.some(record => record.meta.requireAuth)) {
-    // Authentication check
-    const token = localStorage.getItem('token')
-
-    if(token) {
-      // check if token is valid 
-      return next()
-    }
-
-    return next('/login')
-  } 
-
-  next()
-})
 
 export default router
