@@ -3,8 +3,6 @@ import { ref } from 'vue'
 import { type User, getUsers } from "@/model/users";
 
 const users = ref([] as User[])
-const selectedUser = ref(null as User | null)
-const isModalOpen = ref(false)
 const showModal = ref(false);
 users.value = getUsers();
 
