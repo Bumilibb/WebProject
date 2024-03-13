@@ -1,9 +1,13 @@
-interface ExerciseActivity {
+
+
+
+export interface ExerciseActivity {
     id: number;
     userId: number;
     name: string;
     type: string;
     duration: number;
+    workout: string;
     caloriesBurned: number;
 }
 
