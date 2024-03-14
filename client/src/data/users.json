@@ -13,8 +13,7 @@
             "password": "c0ral",
             "isAdmin": true,
             "image": "https://cdn.pixabay.com/photo/2016/05/16/02/53/the-walking-dead-1394892_1280.jpg",
-            "activities": [
-                {
+      
                     "activityID": 1,
                     "date": "2011-03-06",
                     "name": "Jog",
@@ -22,8 +21,6 @@
                     "duration": 5.5,
                     "activityImage": "https://cdn.pixabay.com/photo/2023/01/11/01/49/building-7710808_640.jpg",
                     "workout": "Morning Jog to King County Sheriff's Department"
-                }
-            ]
         },
         {
             "id": 2,
@@ -38,8 +35,7 @@
             "password": "123",
             "isAdmin": false,
             "image": "https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=600",
-            "activities": [
-                {
+       
                     "activityID": 2,
                     "date": "2011-06-07",
                     "name": "Hiking",
@@ -47,8 +43,7 @@
                     "duration": 6.5,
                     "activityImage": "https://cdn.pixabay.com/photo/2017/08/06/12/06/people-2591874_640.jpg",
                     "workout": "Walked to the top of the mountain"
-                }
-            ]
+     
         },
         {
             "id": 3,
@@ -63,8 +58,7 @@
             "password": "abcd",
             "isAdmin": false,
             "image": "https://media.istockphoto.com/id/496474631/photo/river-man.jpg?s=612x612&w=0&k=20&c=f-ymZ1KapvvmX7ifojaTnA_u3tzU-_FG9q-ZHkfGMNs=",
-            "activities": [
-                {
+    
                     "activityID": 3,
                     "date": "2011-01-02",
                     "name": "Squats",
@@ -72,8 +66,7 @@
                     "duration": 1.5,
                     "activityImage": "https://media.istockphoto.com/id/1726383429/photo/senior-man-with-knee-pain.jpg?s=612x612&w=is&k=20&c=hPlbwNYLdx50PkYdoHxbk_0vRzA8323TjoERVbdf908=",
                     "workout": "Squats in the Park"
-                }
-            ]
+     
         },
         {
             "id": 4,
@@ -88,8 +81,7 @@
             "password": "miles",
             "isAdmin": true,
             "image": "https://images.pexels.com/photos/810775/pexels-photo-810775.jpeg?auto=compress&cs=tinysrgb&w=600",
-            "activities": [
-                {
+      
                     "activityID": 4,
                     "date": "2019-01-01",
                     "name": "Jog",
@@ -97,8 +89,7 @@
                     "duration": 5.5,
                     "activityImage": "https://cdn.pixabay.com/photo/2020/04/22/10/14/running-5077128_1280.jpg",
                     "workout": "Morning Jog to the cafe"
-                }
-            ]
+  
         },
         {
             "id": 5,
@@ -113,8 +104,7 @@
             "password": "aUTdmmmbH",
             "isAdmin": false,
             "image": "https://cdn.pixabay.com/photo/2016/11/29/13/14/attractive-1869761_1280.jpg",
-            "activities": [
-                {
+        
                     "activityID": 5,
                     "date": "2010-09-09",
                     "name": "Push-ups",
@@ -122,8 +112,6 @@
                     "duration": 2.4,
                     "activityImage": "https://files.oaiusercontent.com/file-nrErHk4HNUIaLLKYPTykdxX1?se=2024-03-14T06%3A49%3A22Z&sp=r&sv=2021-08-06&sr=b&rscc=max-age%3D31536000%2C%20immutable&rscd=attachment%3B%20filename%3D348e45e8-3bec-4e83-8302-7274abaaec57.webp&sig=iMzlojr2fjTRvU6mkNLH1gym7cIA/tuTCqUc47me9ZU%3D",
                     "workout": "Push-ups at home"
-                }
-            ]
         },
         {
             "id": 6,
@@ -138,8 +126,7 @@
             "password": "zY1n",
             "isAdmin": false,
             "image": "https://images.pexels.com/photos/2313668/pexels-photo-2313668.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-            "activities": [
-                {
+     
                     "activityID": 6,
                     "date": "2011-05-05",
                     "name": "Cardio",
@@ -147,8 +134,7 @@
                     "duration": 5.5,
                     "activityImage": "https://images.pexels.com/photos/1850629/pexels-photo-1850629.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
                     "workout": "Cycled around the city"
-                }
-            ]
+     
         },
         {
             "id": 7,
@@ -163,8 +149,7 @@
             "password": "YVmhktgYVS",
             "isAdmin": false,
             "image": "https://cdn.pixabay.com/photo/2015/07/27/00/41/homeless-861899_640.jpg",
-            "activities": [
-                {
+      
                     "activityID": 7,
                     "date": "2011-06-05",
                     "name": "Jog",
@@ -172,8 +157,7 @@
                     "duration": 3.5,
                     "activityImage": "https://images.pexels.com/photos/7869515/pexels-photo-7869515.jpeg?auto=compress&cs=tinysrgb&w=400",
                     "workout": "Moring Jog anound Hudson river"
-                }
-            ]
+     
         },
         {
             "id": 9,
@@ -188,8 +172,7 @@
             "password": "HTQxxXV9Bq4",
             "isAdmin": false,
             "image": "https://images.pexels.com/photos/1199590/pexels-photo-1199590.jpeg?auto=compress&cs=tinysrgb&w=600",
-            "activities": [
-                {
+         
                     "activityID": 8,
                     "date": "2019-01-01",
                     "name": "Jog",
@@ -197,8 +180,7 @@
                     "duration": 2.5,
                     "activityImage": "https://images.pexels.com/photos/16159095/pexels-photo-16159095/free-photo-of-woman-sitting-on-rooftop-in-city-downtown-at-night.jpeg?auto=compress&cs=tinysrgb&w=400",
                     "workout": "Night Jog to around the city"
-                }
-            ]
+       
         },
         {
             "id": 10,
@@ -213,8 +195,7 @@
             "password": "i0xzpX",
             "isAdmin": false,
             "image": "https://images.pexels.com/photos/3779770/pexels-photo-3779770.jpeg?auto=compress&cs=tinysrgb&w=600",
-            "activities": [
-                {
+          
                     "activityID": 9,
                     "date": "2011-03-03",
                     "name": "Yoga",
@@ -222,8 +203,7 @@
                     "duration": 3.0,
                     "activityImage": "https://images.pexels.com/photos/6975758/pexels-photo-6975758.jpeg?auto=compress&cs=tinysrgb&w=400",
                     "workout": "Morning yoga. Namaste"
-                }
-            ]
+      
         },
         {
             "id": 12,
@@ -238,8 +218,7 @@
             "password": "esTkitT1r",
             "isAdmin": false,
             "image": "https://images.pexels.com/photos/4754140/pexels-photo-4754140.jpeg?auto=compress&cs=tinysrgb&w=400",
-            "activities": [
-                {
+        
                     "activityID": 10,
                     "date": "2011-05-02",
                     "name": "Boxing",
@@ -247,8 +226,7 @@
                     "duration": 1.4,
                     "activityImage": "https://images.pexels.com/photos/6999241/pexels-photo-6999241.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
                     "workout": "Boxing at the gym"
-                }
-            ]
+    
         },
         {
             "id": 14,
@@ -263,8 +241,7 @@
             "password": "GyLn",
             "isAdmin": false,
             "image": "https://cdn.pixabay.com/photo/2016/07/13/16/00/box-1514845_640.jpg",
-            "activities": [
-                {
+          
                     "activityID": 11,
                     "date": "2011-03-09",
                     "name": "Boxing",
@@ -272,8 +249,7 @@
                     "duration": 5.5,
                     "activityImage": "https://images.pexels.com/photos/9944849/pexels-photo-9944849.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
                     "workout": "Afternoon Boxing"
-                }
-            ]
+       
         },
         {
             "id": 15,
@@ -288,8 +264,7 @@
             "password": "0lelplR",
             "isAdmin": false,
             "image": "https://cdn.pixabay.com/photo/2017/08/07/19/44/girl-2607110_640.jpg",
-            "activities": [
-                {
+          
                     "activityID": 12,
                     "date": "2012-01-01",
                     "name": "Weight-lifting",
@@ -297,8 +272,7 @@
                     "duration": 12.1,
                     "activityImage": "https://images.pexels.com/photos/4945534/pexels-photo-4945534.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
                     "workout": "Morning weight-lifting at Mohonk mountain"
-                }
-            ]
+      
         },
         {
             "id": 17,
@@ -313,8 +287,7 @@
             "password": "mSPzYZfR",
             "isAdmin": false,
             "image": "https://cdn.pixabay.com/photo/2016/11/18/19/07/happy-1836445_640.jpg",
-            "activities": [
-                {
+        
                     "activityID": 13,
                     "date": "2011-07-02",
                     "name": "Weight-lifting",
@@ -322,8 +295,7 @@
                     "duration": 10.5,
                     "activityImage": "https://images.pexels.com/photos/7289245/pexels-photo-7289245.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
                     "workout": "Afternoon weight-lifting at the gym"
-                }
-            ]
+    
         },
         {
             "id": 18,
@@ -338,8 +310,7 @@
             "password": "cAjfb8vg",
             "isAdmin": true,
             "image": "https://cdn.pixabay.com/photo/2017/10/07/17/48/woman-2827333_640.jpg",
-            "activities": [
-                {
+           
                     "activityID": 14,
                     "date": "2011-01-01",
                     "name": "Swimming",
@@ -347,8 +318,7 @@
                     "duration": 7.5,
                     "activityImage": "https://images.pexels.com/photos/2403840/pexels-photo-2403840.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
                     "workout": "Morning Swim to the beach"
-                }
-            ]
+   
         },
         {
             "id": 19,
@@ -363,8 +333,7 @@
             "password": "UZGAiqPqWQHQ",
             "isAdmin": false,
             "image": "https://cdn.pixabay.com/photo/2018/10/29/21/46/human-3782189_640.jpg",
-            "activities": [
-                {
+          
                     "activityID": 15,
                     "date": "2011-08-01",
                     "name": "walking",
@@ -372,8 +341,7 @@
                     "duration": 2.5,
                     "activityImage": "https://images.pexels.com/photos/3450124/pexels-photo-3450124.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
                     "workout": "Walked acound Vatican City"
-                }
-            ]
+       
         }
     ],
     "total": 100,
