@@ -38,7 +38,7 @@
             <th>Last Name</th>
             <th>Emails</th>
             <th>Username</th>
-            <th>Age</th>
+            <th>Admin</th>
             <th></th>
           </tr>
         </thead>
@@ -49,7 +49,7 @@
             <td>{{ user.lastName }}</td>
             <td>{{ user.email }}</td>
             <td>{{ user.username }}</td>
-            <td>{{ user.age }}</td>
+            <td>{{ user.isAdmin }}</td>
             <td>
               <button class="button" @click="editUser(user)">
                 <i class="fas fa-edit"></i> 
