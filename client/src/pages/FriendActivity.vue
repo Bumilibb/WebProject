@@ -3,6 +3,7 @@ import { ref } from 'vue'
 import { type User, getUsers } from "@/model/users";
 
 const users = ref([] as User[])
+const type = ref('');
 const showModal = ref(false);
 
 users.value = getUsers();
@@ -18,6 +19,35 @@ const closeModal = () => {
 function removeUser(user: User) {
   users.value = users.value.filter(u => u.id !== user.id);
 }
+
+const emit = defineEmits(['add-activity']);
+const showForm = ref(false);
+const workout = ref({
+    title: '',
+    date: '',
+    activityImage: '',
+    location: "",
+    duration: 0
+
+});
+
+const addWorkout = () => {
+  emit('add-activity', workout.value);
+  workout.value = {
+    title: '',
+    date: '',
+    activityImage: '',
+    location: '',
+    duration: 0
+ 
+  };
+  toggleForm();
+};
+
+function toggleForm() {
+  showForm.value = !showForm.value;
+}
+
 </script>
 
 <template>
@@ -36,28 +66,28 @@ function removeUser(user: User) {
               <div class="field">
                 <label class="label">Title</label>
                 <div class="control">
-                  <input class="input" type="text" placeholder="Title" v-model="title">
+                  <input class="input" type="text" placeholder="Title" v-model="workout.title">
                 </div>
               </div>
 
               <div class="field">
                 <label class="label">Date</label>
                 <div class="control">
-                  <input class="input" type="date" v-model="date">
+                  <input class="input" type="date" v-model="workout.date">
                 </div>
               </div>
 
               <div class="field">
                 <label class="label">Duration</label>
                 <div class="control">
-                  <input class="input" type="text" placeholder="Duration" v-model="duration">
+                  <input class="input" type="text" placeholder="Duration" v-model="workout.duration">
                 </div>
               </div>
 
               <div class="field">
                 <label class="label">Location</label>
                 <div class="control">
-                  <input class="input" type="text" placeholder="Location" v-model="location">
+                  <input class="input" type="text" placeholder="Location" v-model="workout.location">
                 </div>
               </div>
 

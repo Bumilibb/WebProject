@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, computed, defineEmits } from 'vue';
 import { type User, getUsers, storeUser } from "@/model/users";
 
 const users = ref([] as User[]);
 users.value = getUsers();
+const type = ref(''); 
 
 const showModal = ref(false);
-
 const openModal = () => {
   showModal.value = true;
 };
@@ -14,17 +14,35 @@ const openModal = () => {
 const closeModal = () => {
   showModal.value = false;
 };
-function removeUser(user: User){
-        users.value = users.value.filter(u => u.id !== user.id);
-    }
+const emit = defineEmits(['add-activity']);
+const showForm = ref(false);
+const workout = ref({
+    title: '',
+    date: '',
+    activityImage: '',
+    location: "",
+    duration: 0
 
-    const Selected = storeUser.users;
-    const emit = defineEmits(['updateUser']);
-const Currentuser = ref<User | null>(null);
+});
+const addWorkout = () => {
+  emit('add-activity', workout.value);
+  workout.value = {
+    title: '',
+    date: '',
+    activityImage: '',
+    location: '',
+    duration: 0
+ 
+  };
+  toggleForm();
+};
 
-const SetCurrentUser = (user: User) => {
-  Currentuser.value = user;
-  emit('updateUser', user);
+function toggleForm() {
+  showForm.value = !showForm.value;
+}
+
+const removeUser = (user: User) => {
+  users.value = users.value.filter((u) => u !== user);
 };
 </script>
 
@@ -44,28 +62,28 @@ const SetCurrentUser = (user: User) => {
               <div class="field">
                 <label class="label">Title</label>
                 <div class="control">
-                  <input class="input" type="text" placeholder="Title" v-model="title">
+                  <input class="input" type="text" placeholder="Title" v-model="workout.title">
                 </div>
               </div>
 
               <div class="field">
                 <label class="label">Date</label>
                 <div class="control">
-                  <input class="input" type="date" v-model="date">
+                  <input class="input" type="date" v-model="workout.date">
                 </div>
               </div>
 
               <div class="field">
                 <label class="label">Duration</label>
                 <div class="control">
-                  <input class="input" type="text" placeholder="Duration" v-model="duration">
+                  <input class="input" type="text" placeholder="Duration" v-model="workout.duration">
                 </div>
               </div>
 
               <div class="field">
                 <label class="label">Location</label>
                 <div class="control">
-                  <input class="input" type="text" placeholder="Location" v-model="location">
+                  <input class="input" type="text" placeholder="Location" v-model="workout.location">
                 </div>
               </div>
 
