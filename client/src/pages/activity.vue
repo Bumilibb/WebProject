@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { type User, getUsers } from "@/model/users";
+import { type User, getUsers, storeUser } from "@/model/users";
 
 const users = ref([] as User[]);
 users.value = getUsers();
@@ -17,6 +17,15 @@ const closeModal = () => {
 function removeUser(user: User){
         users.value = users.value.filter(u => u.id !== user.id);
     }
+
+    const Selected = storeUser.users;
+    const emit = defineEmits(['updateUser']);
+const Currentuser = ref<User | null>(null);
+
+const SetCurrentUser = (user: User) => {
+  Currentuser.value = user;
+  emit('updateUser', user);
+};
 </script>
 
 <template>
@@ -93,44 +102,42 @@ function removeUser(user: User){
   </div>
 
   <div class="columns is-centered">
-    <div class="box" style="display: flex; justify-content: center;">
-      <article class="media">
+    <div class="box">
+      <article class="media" v-for="user in users" :key="user.id">
         <div class="media-left">
           <figure class="image is-64x64">
-            <img src="https://bulma.io/images/placeholders/128x128.png" alt="Image">
+            <img class="image is-rounded" :src="user.image" alt="Image">
           </figure>
         </div>
+
         <div class="media-content">
-          <div class="content">
-            <p>
-              <strong>Moshe Plotkin</strong> <small>@JewPaltz</small> <small>2 hr ago</small>
-              <br>
-              Biked through campus - { "lat": 41.7459793, "lng": -74.082801 }
-              <br>
-              <span class="label">Distance:</span> 1.0 mi
-              <br>
-              <span class="label">Duration:</span> 0:30
-            </p>
-          </div>
-          <nav class="level is-mobile">
-            <div class="level-left">
-              <a class="level-item" aria-label="reply">
-                <span class="icon is-small">
-                  <i class="fas fa-reply" aria-hidden="true"></i>
-                </span>
-              </a>
-              <a class="level-item" aria-label="retweet">
-                <span class="icon is-small">
-                  <i class="fas fa-retweet" aria-hidden="true"></i>
-                </span>
-              </a>
-              <a class="level-item" aria-label="like">
-                <span class="icon is-small">
-                  <i class="fas fa-heart" aria-hidden="true"></i>
-                </span>
-              </a>
+          <div class="box">
+            <div class="media-right">
+              <figure class="image is-5by3">
+                <img :src="user.activityImage" alt="Activity Image">
+              </figure>
+              <div class="media-content">
+                <div class="post-header">
+                  <strong class="post-author">{{ user.firstName }}</strong>
+                  <small class="post-date">{{ user.date }}</small>
+                </div>
+                <div class="post-body">
+                  <br>
+                
+                  <div class="post-details">
+                    <p class="post-description">
+                  <strong>Status: </strong>  {{ user.workout }}
+                  </p>
+                  <p class="post-description">
+                    <strong>calories Burned:</strong> {{ user.caloriesBurned }} calories!
+                  </p>
+                    <p><span class="label">Duration:</span> {{ user.duration }}</p>
+                    <p><span class="label">Workout Type:</span> {{ user.name }}</p>
+                  </div>
+                </div>
+              </div>
             </div>
-          </nav>
+          </div>
         </div>
         <div class="media-right">
           <button class="delete" @click="removeUser(user)"></button>
@@ -184,5 +191,31 @@ function removeUser(user: User){
   color: #fff;
 }
 
+.image img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.post-date{
+  color: #4a4a4a;
+  font-size: 0.8rem;
+  margin-left: 500px;
+  
+}
+
+.post-author {
+  color: #212a70;
+  font-family: "Arial", sans-serif; /* Replace with your desired font */
+  font-size: 1.2rem; /* Adjust the font size as needed */
+  font-weight: bold; /* Adjust the font weight as needed */
+}
+
+  .post-detail {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #777777;
+  }
 </style>
 
