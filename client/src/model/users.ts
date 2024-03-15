@@ -2,6 +2,7 @@ import user from '@/data/users.json';
 import { reactive, ref } from 'vue';
 
 export interface User {
+  [x: string]: any;
   id: number
   firstName: string
   lastName: string
@@ -45,6 +46,7 @@ export const storeUser = reactive({
   users: getUsers()
 });
 
+/*
 export function deleteUser(username: string) {
   const index = storeUser.users.findIndex(user => user.username === username);
   if (index !== -1) {
@@ -52,7 +54,14 @@ export function deleteUser(username: string) {
   }
 }
 
+*/
+export function getCurrentUser(): User | null {
+  const currentUsername = localStorage.getItem('currentUsername');
+  if (!currentUsername) return null;
 
-//
+  const currentUser = storeUser.users.find(user => user.username === currentUsername);
+  return currentUser || null;
+}
+
 
 

@@ -1,12 +1,12 @@
 <script setup lang="ts">
-    import { ref } from 'vue'
+    import { ref, defineEmits } from 'vue'
     import { type User, getUsers } from "@/model/users";
 
     const users = ref([] as User[])
+    users.value = getUsers();
+
     const selectedUser = ref(null as User | null)
     const isModalOpen = ref(false)
-
-    users.value = getUsers();
 
     function removeUser(user: User){
         users.value = users.value.filter(u => u.id !== user.id);

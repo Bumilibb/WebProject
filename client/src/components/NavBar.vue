@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router';
 import { ref, defineEmits } from 'vue';
-import { type User, storeUser } from "@/model/users";
+import { type User, storeUser, getUsers } from "@/model/users";
 
 let isActive = ref(false);
 
@@ -12,6 +12,7 @@ function toggleMenu() {
 
 const users = storeUser.users;
 const emit = defineEmits(['updateUser']);
+
 const Currentuser = ref<User | null>(null);
 
 const SetCurrentUser = (user: User) => {
@@ -47,7 +48,7 @@ const Logout = () => {
         </RouterLink>
 
 
-        <RouterLink to="/" class="navbar-item fas fa-chart-line" style="margin-top: 10px;">
+        <RouterLink to="/statistics" class="navbar-item fas fa-chart-line" style="margin-top: 10px;">
           Statistics
         </RouterLink>
 

@@ -110,7 +110,7 @@
                     "name": "Push-ups",
                     "caloriesBurned": 211,
                     "duration": 2.4,
-                    "activityImage": "https://files.oaiusercontent.com/file-nrErHk4HNUIaLLKYPTykdxX1?se=2024-03-14T06%3A49%3A22Z&sp=r&sv=2021-08-06&sr=b&rscc=max-age%3D31536000%2C%20immutable&rscd=attachment%3B%20filename%3D348e45e8-3bec-4e83-8302-7274abaaec57.webp&sig=iMzlojr2fjTRvU6mkNLH1gym7cIA/tuTCqUc47me9ZU%3D",
+                    "activityImage": "https://images.pexels.com/photos/2780762/pexels-photo-2780762.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
                     "workout": "Push-ups at home"
         },
         {
@@ -132,8 +132,8 @@
                     "name": "Cardio",
                     "caloriesBurned": 160,
                     "duration": 5.5,
-                    "activityImage": "https://images.pexels.com/photos/1850629/pexels-photo-1850629.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-                    "workout": "Cycled around the city"
+                    "activityImage": "https://cdn.pixabay.com/photo/2020/08/22/00/24/cyclist-5507225_640.jpg",
+                    "workout": "Cycled around"
      
         },
         {
@@ -148,14 +148,14 @@
             "username": "Wyman6",
             "password": "YVmhktgYVS",
             "isAdmin": false,
-            "image": "https://cdn.pixabay.com/photo/2015/07/27/00/41/homeless-861899_640.jpg",
+            "image": "https://cdn.pixabay.com/photo/2016/11/21/14/30/man-1845715_640.jpg",
       
                     "activityID": 7,
                     "date": "2011-06-05",
                     "name": "Jog",
                     "caloriesBurned": 500,
                     "duration": 3.5,
-                    "activityImage": "https://images.pexels.com/photos/7869515/pexels-photo-7869515.jpeg?auto=compress&cs=tinysrgb&w=400",
+                    "activityImage": "https://cdn.pixabay.com/photo/2024/03/01/12/27/ai-generated-8606458_640.jpg",
                     "workout": "Morning Jog anound Hudson river"
      
         },
@@ -178,8 +178,8 @@
                     "name": "Jog",
                     "caloriesBurned": 50,
                     "duration": 2.5,
-                    "activityImage": "https://images.pexels.com/photos/16159095/pexels-photo-16159095/free-photo-of-woman-sitting-on-rooftop-in-city-downtown-at-night.jpeg?auto=compress&cs=tinysrgb&w=400",
-                    "workout": "Night Jog to around the city"
+                    "activityImage": "https://cdn.pixabay.com/photo/2020/06/01/14/01/photoshop-5246775_640.jpg",
+                    "workout": "Jogged around the city"
        
         },
         {
@@ -201,7 +201,7 @@
                     "name": "Yoga",
                     "caloriesBurned": 10,
                     "duration": 3.0,
-                    "activityImage": "https://images.pexels.com/photos/6975758/pexels-photo-6975758.jpeg?auto=compress&cs=tinysrgb&w=400",
+                    "activityImage": "https://cdn.pixabay.com/photo/2020/06/10/07/05/yoga-5281457_640.jpg",
                     "workout": "Morning yoga. Namaste"
       
         },
@@ -224,7 +224,7 @@
                     "name": "Boxing",
                     "caloriesBurned": 50,
                     "duration": 1.4,
-                    "activityImage": "https://images.pexels.com/photos/6999241/pexels-photo-6999241.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+                    "activityImage": "https://cdn.pixabay.com/photo/2023/08/09/01/21/woman-8178365_640.png",
                     "workout": "Boxing at the gym"
     
         },
@@ -293,8 +293,8 @@
                     "name": "Weight-lifting",
                     "caloriesBurned": 600,
                     "duration": 10.5,
-                    "activityImage": "https://images.pexels.com/photos/7289245/pexels-photo-7289245.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-                    "workout": "Afternoon weight-lifting at the gym"
+                    "activityImage": "https://cdn.pixabay.com/photo/2018/01/16/11/43/wood-3085818_1280.jpg",
+                    "workout": "Afternoon weight-lifting in the forest"
     
         },
         {
@@ -317,7 +317,7 @@
                     "caloriesBurned": 600,
                     "duration": 7.5,
                     "activityImage": "https://images.pexels.com/photos/2403840/pexels-photo-2403840.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-                    "workout": "Morning Swim to the beach"
+                    "workout": "Morning Swim at the beach"
    
         },
         {
@@ -339,7 +339,7 @@
                     "name": "walking",
                     "caloriesBurned": 40,
                     "duration": 2.5,
-                    "activityImage": "https://images.pexels.com/photos/3450124/pexels-photo-3450124.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+                    "activityImage": "https://cdn.pixabay.com/photo/2017/02/05/17/40/saint-peters-basilica-2040718_1280.jpg",
                     "workout": "Walked acound Vatican City"
        
         }
