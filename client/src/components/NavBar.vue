@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router';
-import { ref, defineEmits } from 'vue';
+import { ref, defineEmits, provide } from 'vue';
 import { type User, storeUser, getUsers } from "@/model/users";
+import { useStore } from "@/viewModel/store";
 
 let isActive = ref(false);
 
@@ -17,8 +18,13 @@ const Currentuser = ref<User | null>(null);
 
 const SetCurrentUser = (user: User) => {
   Currentuser.value = user;
-  emit('updateUser', user);
+  setCurrentUser(user); // Set the current user in the store
 };
+
+const { setCurrentUser } = useStore();
+
+provide('currentUser', Currentuser); // Provide the current user to child components
+
 
 const Logout = () => {
   Currentuser.value = null;
