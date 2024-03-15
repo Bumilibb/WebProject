@@ -15,8 +15,14 @@ export function useStore() {
     return currentUser.value;
   };
 
+  // Function to remove the current user
+  const removeUser = () => {
+    currentUser.value = null;
+  };
+
   return {
     setCurrentUser,
-    getCurrentUser
+    getCurrentUser,
+    removeUser
   }
 }

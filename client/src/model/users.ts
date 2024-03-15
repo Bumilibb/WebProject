@@ -33,28 +33,13 @@ export function useUser() {
   const users = ref([] as User[])
   users.value = getUsers()
 }
-  //doesnt work properly yet
-  /*let isLoggedIn = ref(false);
-  let currentUser = ref(null as User | null);
 
-  return { isLoggedIn, currentUser };
-}
-  */
+//repeat for store.ts but with reactive
 
-//login function
 export const storeUser = reactive({
   users: getUsers()
 });
 
-/*
-export function deleteUser(username: string) {
-  const index = storeUser.users.findIndex(user => user.username === username);
-  if (index !== -1) {
-    storeUser.users.splice(index, 1);
-  }
-}
-
-*/
 export function getCurrentUser(): User | null {
   const currentUsername = localStorage.getItem('currentUsername');
   if (!currentUsername) return null;

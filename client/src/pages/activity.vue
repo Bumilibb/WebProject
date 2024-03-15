@@ -1,10 +1,8 @@
 <script setup lang="ts">
-import { ref, inject } from 'vue'
 import AddActivityCard from '@/components/AddCard.vue';
-import MyActivityCard from '@/components/MyActivityCard.vue';
 import { useStore } from "@/viewModel/store";
 
-const { getCurrentUser } = useStore();
+const { getCurrentUser, removeUser  } = useStore();
 
 const currentUser = getCurrentUser();
 
@@ -52,15 +50,39 @@ const currentUser = getCurrentUser();
           </div>
         </div>
         <div class="media-right">
-         <!-- <button class="delete" @click="removeUser(user)"></button> -->
+          <button class="delete" @click="removeUser"></button> 
         </div>
       </article>
     </div>
+
 
 </template>
 
 <style scoped>
 
+.label {
+    font-weight: bold;
+}
+
+.post-date{
+  color: #4a4a4a;
+  font-size: 0.8rem;
+  margin-left: 500px;
+  
+}
+
+.post-author {
+  color: #212a70;
+  font-family: "Arial", sans-serif; /* Replace with your desired font */
+  font-size: 1.2rem; /* Adjust the font size as needed */
+  font-weight: bold; /* Adjust the font weight as needed */
+}
+
+  .post-detail {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #777777;
+  }
 
 </style>
 
