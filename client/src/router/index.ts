@@ -7,8 +7,7 @@ const router = createRouter({
   routes: routes
 })
 
-//doenst work yet
-router.beforeEach((to, from, next) => {
+/*router.beforeEach((to, from, next) => {
   const { getCurrentUser } = useStore()
   const currentUser = getCurrentUser()
   if (!['/login', '/register'].includes(to.path) && !currentUser) {
@@ -17,4 +16,5 @@ router.beforeEach((to, from, next) => {
     next()
   }
 })
+*/
 export default router

@@ -8,9 +8,12 @@
             <div class="container">
                 <h1 class="title is-1">Welcome to Fitness Tracker</h1>
                 <h2 class="subtitle is-3">Track your fitness journey with ease</h2>
+                <h9 >Login as Rick Grimes to be the Admin!</h9>
+                <br>
                 <RouterLink to="/login" class="login " style="margin-top: 10px;">
                     <button class="button is-primary is-rounded" >Get Started</button>
                 </RouterLink>
+                
             </div>
         </div>
     </section>
