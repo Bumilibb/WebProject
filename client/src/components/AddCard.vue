@@ -1,126 +1,105 @@
 <script setup lang="ts">
-import { ref, defineEmits } from 'vue';
-import { refUsers, deleteActivity, saveUser} from '@/viewModel/session'
+import { ref, defineEmits, onMounted } from 'vue';
+import { type User, getUsers } from "@/model/users";
 
-const showModal = ref(false);
-const type = ref(''); 
-const openModal = () => {
-  showModal.value = true;
-};
+const users = ref([] as User[]);
+const newActivity = ref<User | null>(null);
 
-const closeModal = () => {
-  showModal.value = false;
-};
-
-
-const emit = defineEmits(['add-activity']);
-const showForm = ref(false);
-const workout = ref({
-    title: '',
-    date: '',
-    activityImage: '',
-    location: "",
-    duration: 0
-
+onMounted(async () => {
+  users.value = await getUsers();
 });
-const addWorkout = () => {
-  emit('add-activity', workout.value);
-  workout.value = {
-    title: '',
-    date: '',
-    activityImage: '',
-    location: '',
-    duration: 0
- 
-  };
-  closeModal(); // Close the first modal and open the confirmation modal
-};
 
-function toggleForm() {
-  showForm.value = !showForm.value;
+function addActivity() {
+  newActivity.value = {
+    id: 0,
+    firstName: '',
+    lastName: '',
+    maidenName: '',
+    age: 0,
+    gender: '',
+    email: '',
+    phone: '',
+    username: '',
+    password: '',
+    isAdmin: false,
+    image: '',
+    activityID: 0,
+    date: '',
+    name: '',
+    caloriesBurned: 0,
+    duration: 0,
+    activityImage: 'https://picsum.photos/200',
+    workout: ''
+  };
 }
 
+function saveActivity() {
+  if (newActivity.value) {
+    users.value.unshift(newActivity.value);
+    newActivity.value = null;
+  }
+}
 </script>
 
 <template>
-    <button class="button is-primary" @click="openModal">Add Workout</button>
-      <div v-if="showModal" class="modal is-active">
-        <div class="modal-background"></div>
-        <div class="modal-card">
-          <header class="modal-card-head">
-            <p class="modal-card-title">Add Activity</p>
-            <button class="delete" aria-label="close" @click="closeModal"></button>
-          </header>
-          <section class="modal-card-body">
-            <form @submit.prevent="addWorkout">
-              <div class="field">
-                <label class="label">Title</label>
-                <div class="control">
-                  <input class="input" type="text" placeholder="Title" v-model="workout.title">
-                </div>
-              </div>
+  <button class="button is-primary" @click="addActivity">Add Workout</button>
+  <div v-if="newActivity" class="modal is-active">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Add Activity</p>
+        <button class="delete" aria-label="close" @click="newActivity=null"></button>
+      </header>
+      <section class="modal-card-body">
+        <form @submit.prevent="saveActivity">
+          <div class="field">
+            <label class="label">Name</label>
+            <div class="control">
+              <input class="input" type="text" placeholder="Title" v-model="newActivity.username">
+            </div>
+          </div>
 
-              <div class="field">
-                <label class="label">Date</label>
-                <div class="control">
-                  <input class="input" type="date" v-model="workout.date">
-                </div>
-              </div>
+          <div class="field">
+            <label class="label">Date</label>
+            <div class="control">
+              <input class="input" type="date" v-model="newActivity.date">
+            </div>
+          </div>
 
-              <div class="field">
-                <label class="label">Duration</label>
-                <div class="control">
-                  <input class="input" type="text" placeholder="Duration" v-model="workout.duration">
-                </div>
-              </div>
+          <div class="field">
+            <label class="label">Duration</label>
+            <div class="control">
+              <input class="input" type="text" placeholder="Duration" v-model="newActivity.duration">
+            </div>
+          </div>
 
-              <div class="field">
-                <label class="label">Location</label>
-                <div class="control">
-                  <input class="input" type="text" placeholder="Location" v-model="workout.location">
-                </div>
-              </div>
+          <div class="field">
+            <label class="label">Discription</label>
+            <div class="control">
+              <input class="input" type="text" placeholder="Where did you go? What did you do?" v-model="newActivity.workout">
+            </div>
+          </div>
 
-              <div class="field">
-                <label class="label">Picture</label>
-                <div class="control">
-                  <input class="input" type="file">
-                </div>
-              </div>
+          <div class="field">
+            <label class="label">Picture</label>
+            <div class="control">
+              <input class="input" type="file">
+            </div>
+          </div>
 
-              <div class="field">
-                <label class="label">Type</label>
-                <div class="control">
-                  <div class="select">
-                    <select v-model="type">
-                      <option>Select type</option>
-                      <option>Run</option>
-                      <option>Bike</option>
-                      <option>Walk</option>
-                      <option>Cardio</option>
-                      <option>Strength</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-            </form>
-          </section>
-
-          <footer class="modal-card-foot">
-            <button class="button s" @click="closeModal">Save changes</button>
-          </footer>
-
-
-
-          
-        </div>
-      </div>
-
-
+         <div class="field">
+                            <div class="control">
+                                <input class="button is-primary" type="submit" value="Save">
+                            </div>
+                        </div>
+        </form>
+      </section>
+     
+    </div>
+  </div>
 </template>
 
 <style scoped>
-
 .button {
   border-radius: 0.5rem;
   background-color: rgb(232, 146, 160);
@@ -141,16 +120,16 @@ function toggleForm() {
 }
 
 .box-list {
-        margin-top: 50px;
-        background-color: white;
-        border-radius: 0.5rem;
-        box-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, 0.1), 0 0px 0 1px rgba(10, 10, 10, 0.02);
-        color: #4a4a4a;
-        display: block;
-        padding: 0.75rem;
-        width: 50%;
-    }
-    
+  margin-top: 50px;
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, 0.1), 0 0px 0 1px rgba(10, 10, 10, 0.02);
+  color: #4a4a4a;
+  display: block;
+  padding: 0.75rem;
+  width: 50%;
+}
+
 @media (min-width: 1024px) {
   .Myactivity {
     min-height: 100vh;
@@ -158,5 +137,4 @@ function toggleForm() {
     align-items: center;
   }
 }
-
 </style>
