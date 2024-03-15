@@ -28,7 +28,7 @@ function addActivity() {
     name: '',
     caloriesBurned: 0,
     duration: 0,
-    activityImage: 'https://picsum.photos/200',
+    activityImage: '',
     workout: ''
   };
 }
@@ -52,12 +52,14 @@ function saveActivity() {
       </header>
       <section class="modal-card-body">
         <form @submit.prevent="saveActivity">
+         
           <div class="field">
-            <label class="label">Name</label>
+            <label class="label">Status</label>
             <div class="control">
-              <input class="input" type="text" placeholder="Title" v-model="newActivity.username">
+              <input class="input" type="text" placeholder="Where did you go? What did you do?" v-model="newActivity.workout">
             </div>
           </div>
+
 
           <div class="field">
             <label class="label">Date</label>
@@ -67,6 +69,14 @@ function saveActivity() {
           </div>
 
           <div class="field">
+            <label class="label">Calories</label>
+            <div class="control">
+              <input class="input" type="text" placeholder="How many calories did you burn?" v-model="newActivity.caloriesBurned">
+            </div>
+          </div>
+
+
+          <div class="field">
             <label class="label">Duration</label>
             <div class="control">
               <input class="input" type="text" placeholder="Duration" v-model="newActivity.duration">
@@ -74,16 +84,16 @@ function saveActivity() {
           </div>
 
           <div class="field">
-            <label class="label">Discription</label>
+            <label class="label">Picture</label>
             <div class="control">
-              <input class="input" type="text" placeholder="Where did you go? What did you do?" v-model="newActivity.workout">
+              <input class="input" type="file">
             </div>
           </div>
 
           <div class="field">
-            <label class="label">Picture</label>
+            <label class="label">Workout Type</label>
             <div class="control">
-              <input class="input" type="file">
+              <input class="input" type="text" placeholder="Workout type" v-model="newActivity.name">
             </div>
           </div>
 
@@ -137,4 +147,5 @@ function saveActivity() {
     align-items: center;
   }
 }
+
 </style>

@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 import { type User, getUsers } from "@/model/users";
 import AddActivityCard from '@/components/AddCard.vue';
+import ActivityCard from '@/components/ActivityCard.vue';
 
 const users = ref([] as User[])
 const type = ref('');
@@ -55,50 +56,8 @@ function toggleForm() {
 
 <AddActivityCard />
 
-  <div class="columns is-centered">
-    <div class="box">
-      <article class="media" v-for="user in users" :key="user.id">
-        <div class="media-left">
-          <figure class="image is-64x64">
-            <img class="image is-rounded" :src="user.image" alt="Image">
-          </figure>
-        </div>
+<ActivityCard />
 
-        <div class="media-content">
-          <div class="box">
-            <div class="media-right">
-              <figure class="image is-5by3">
-                <img :src="user.activityImage" alt="Activity Image">
-              </figure>
-              <div class="media-content">
-                <div class="post-header">
-                  <strong class="post-author">{{ user.firstName }}</strong>
-                  <small class="post-date">{{ user.date }}</small>
-                </div>
-                <div class="post-body">
-                  <br>
-                
-                  <div class="post-details">
-                    <p class="post-description">
-                  <strong>Status: </strong>  {{ user.workout }}
-                  </p>
-                  <p class="post-description">
-                    <strong>calories Burned:</strong> {{ user.caloriesBurned }} calories!
-                  </p>
-                    <p><span class="label">Duration:</span> {{ user.duration }}</p>
-                    <p><span class="label">Workout Type:</span> {{ user.name }}</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="media-right">
-          <button class="delete" @click="removeUser(user)"></button>
-        </div>
-      </article>
-    </div>
-  </div>
 </template>
 
 <style scoped>
