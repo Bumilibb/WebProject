@@ -1,62 +1,60 @@
 <script setup lang="ts">
 import { ref, defineEmits, onMounted } from 'vue';
-import { type User, getUsers } from "@/model/users";
 
-const users = ref([] as User[]);
-const newActivity = ref<User | null>(null);
+// const users = ref([] as User[]);
+// const newActivity = ref<User | null>(null);
 
 onMounted(async () => {
-  users.value = await getUsers();
 });
 
-function addActivity() {
-  newActivity.value = {
-    id: 0,
-    firstName: '',
-    lastName: '',
-    maidenName: '',
-    age: 0,
-    gender: '',
-    email: '',
-    phone: '',
-    username: '',
-    password: '',
-    isAdmin: false,
-    image: '',
-    activityID: 0,
-    date: '',
-    name: '',
-    caloriesBurned: 0,
-    duration: 0,
-    activityImage: '',
-    workout: ''
-  };
-}
+// function addActivity() {
+//   newActivity.value = {
+//     id: 0,
+//     firstName: '',
+//     lastName: '',
+//     maidenName: '',
+//     age: 0,
+//     gender: '',
+//     email: '',
+//     phone: '',
+//     username: '',
+//     password: '',
+//     isAdmin: false,
+//     image: '',
+//     activityID: 0,
+//     date: '',
+//     name: '',
+//     caloriesBurned: 0,
+//     duration: 0,
+//     activityImage: '',
+//     workout: ''
+//   };
+// }
 
-function saveActivity() {
-  if (newActivity.value) {
-    users.value.unshift(newActivity.value);
-    newActivity.value = null;
-  }
-}
+// function saveActivity() {
+//   if (newActivity.value) {
+//     // users.value.unshift(newActivity.value);
+//     newActivity.value = null;
+//   }
+// }
 </script>
 
 <template>
-  <button class="button is-primary" @click="addActivity">Add Workout</button>
-  <div v-if="newActivity" class="modal is-active">
+  <button class="button is-primary" @click="">Add Workout</button>
+  <div class="modal is-active">
     <div class="modal-background"></div>
     <div class="modal-card">
       <header class="modal-card-head">
         <p class="modal-card-title">Add Activity</p>
-        <button class="delete" aria-label="close" @click="newActivity=null"></button>
+        <button class="delete" aria-label="close" @click=""></button>
       </header>
       <section class="modal-card-body">
-        <form @submit.prevent="saveActivity">
+        <form @submit.prevent="">
          
           <div class="field">
             <label class="label">Status</label>
             <div class="control">
-              <input class="input" type="text" placeholder="Where did you go? What did you do?" v-model="newActivity.workout">
+              <input class="input" type="text" placeholder="Where did you go? What did you do?" >
             </div>
           </div>
 
@@ -64,14 +62,14 @@ function saveActivity() {
           <div class="field">
             <label class="label">Date</label>
             <div class="control">
-              <input class="input" type="date" v-model="newActivity.date">
+              <input class="input" type="date" >
             </div>
           </div>
 
           <div class="field">
             <label class="label">Calories</label>
             <div class="control">
-              <input class="input" type="text" placeholder="How many calories did you burn?" v-model="newActivity.caloriesBurned">
+              <input class="input" type="text" placeholder="How many calories did you burn?">
             </div>
           </div>
 
@@ -79,7 +77,7 @@ function saveActivity() {
           <div class="field">
             <label class="label">Duration</label>
             <div class="control">
-              <input class="input" type="text" placeholder="Duration" v-model="newActivity.duration">
+              <input class="input" type="text" placeholder="Duration" />
             </div>
           </div>
 
@@ -93,7 +91,7 @@ function saveActivity() {
           <div class="field">
             <label class="label">Workout Type</label>
             <div class="control">
-              <input class="input" type="text" placeholder="Workout type" v-model="newActivity.name">
+              <input class="input" type="text" placeholder="Workout type">
             </div>
           </div>
 
