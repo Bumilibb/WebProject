@@ -1,23 +1,27 @@
 <script setup lang="ts">
-import { ref } from 'vue';
-import { type User, getUsers, storeUser } from "@/model/users";
+import { computed } from 'vue';
+import store from '@/viewModel/store';
+import * as activityFetch from '@/model/activityFetch';
 
-const users = ref([] as User[]);
-users.value = getUsers();
 
-const removeUser = (user: User) => {
-  users.value = users.value.filter((u) => u !== user);
-};
+const props = defineProps(["activities"]);
+
+const API_URL = 'http://localhost:3000';
+
+const newst = computed(()=>props.activities.reverse())
+const currentUser = computed(()=>store.getters.getUser());
+
+const emit = defineEmits(['deleteActivity'])
 
 </script>
 
 <template>
    
     <div class="box">
-      <article class="media" v-for="user in users" :key="user.id">
+      <article class="media" v-for="(activity,index) in newst" :key="activity.id">
         <div class="media-left">
           <figure class="image is-64x64">
-            <img class="image is-rounded" :src="user.image" alt="Image">
+            <img class="image is-rounded" :src="`${API_URL}/${activity.ownerPicUrl}`" alt="Image">
           </figure>
         </div>
 
@@ -25,25 +29,25 @@ const removeUser = (user: User) => {
           <div class="box">
             <div class="media-right">
               <figure class="image is-5by3">
-                <img :src="user.activityImage" alt="Activity Image">
+                <img :src="`${API_URL}/${activity.filename}`" alt="Activity Image">
               </figure>
               <div class="media-content">
                 <div class="post-header">
-                  <strong class="post-author">{{ user.firstName }}</strong>
-                  <small class="post-date">{{ user.date }}</small>
+                  <strong class="post-author">{{ activity.ownerUsername }}</strong>
+                  <small class="post-date">{{ activity.date }}</small>
                 </div>
                 <div class="post-body">
                   <br>
                 
                   <div class="post-details">
                     <p class="post-description">
-                  <strong>Status: </strong>  {{ user.workout }}
+                  <strong>Status: </strong>  {{ activity.status }}
                   </p>
                   <p class="post-description">
-                    <strong>calories Burned:</strong> {{ user.caloriesBurned }} calories!
+                    <strong>calories Burned:</strong> {{ activity.caloriesBurned }} calories!
                   </p>
-                    <p><span class="label">Duration:</span> {{ user.duration }}</p>
-                    <p><span class="label">Workout Type:</span> {{ user.name }}</p>
+                    <p><span class="label">Duration:</span> {{ activity.duration }}</p>
+                    <p><span class="label">Workout Type:</span> {{ activity.workoutType }}</p>
                   </div>
                 </div>
               </div>
@@ -51,7 +55,7 @@ const removeUser = (user: User) => {
           </div>
         </div>
         <div class="media-right">
-          <button class="delete" @click="removeUser(user)"></button>
+          <button class="delete" @click="$emit('deleteActivity',activity.id)"></button>
         </div>
       </article>
     </div>
@@ -86,3 +90,4 @@ const removeUser = (user: User) => {
 
 </style>
 
+@/model/activityFetch

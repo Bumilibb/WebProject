@@ -2,22 +2,31 @@
 import { RouterLink } from 'vue-router';
 import { ref, computed } from 'vue';
 import store from '@/viewModel/store';
+import { useToast } from 'vue-toastification';
+import { useRouter } from 'vue-router';
+
+
+
 let isActive = ref(false);
-let isAdmin = ref(false);
+
+const user = computed(()=>store.getters.getUser());
+const pic_url = computed(()=>store.getters.getPicture());
+const toast = useToast(); 
+
 
 function toggleMenu() {
   isActive.value = !isActive.value;
 }
 
-const user = computed(()=>store.getters.getUser());
-
-
 
 function checkIsAdmin(){
-  const currUser:any = user
-  return Boolean(currUser.isAdmin);
+  return String(user.value.isAdmin) === 'true';
+}
 
-
+function logoutUser(){
+  window.scrollTo(0,0);
+  store.mutations.logoutUser(); 
+  toast('You have logged out');
 }
 </script>
 
@@ -95,14 +104,14 @@ function checkIsAdmin(){
 
           <!-- login -->
             <div class="navbar-item ">
-              <img src = "D:/Github_Repositories/WebProject/server/uploads/NE.png" alt ="profile picture">
+              <img :src = "pic_url" alt ="profile picture">
           </div>
 
-          <div class="button-left p-1">
-            <RouterLink to="/signup" class="navbar-item button is-white">
-              <strong>Logout</strong>
+          <button @click="logoutUser()" class="button-left p-0 clear-button">
+            <RouterLink to="/" class="navbar-item button is-white">
+                <strong >Logout</strong>
             </RouterLink>
-          </div>
+          </button>
         </div>
       </div>
 
@@ -111,6 +120,12 @@ function checkIsAdmin(){
 </template>
 
 <style scoped>
+
+.clear-button{
+  border: none;
+  background: none;
+}
+
 .navbar-item {
   color: black;
 }

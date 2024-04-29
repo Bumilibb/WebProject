@@ -1,60 +1,95 @@
 <script setup lang="ts">
-import { ref, defineEmits, onMounted } from 'vue';
+import { ref, onMounted, reactive } from 'vue';
+import { type User } from '@/model/users';
+import type Activity from '@/model/activities';
+import * as fileHandler from '@/model/functions/fileUploads';
+import store from '@/viewModel/store';
+import { defineEmits } from 'vue';
+import { createActivityAPI } from '@/model/activityFetch';
+import { useToast } from 'vue-toastification';
 
-// const users = ref([] as User[]);
-// const newActivity = ref<User | null>(null);
+const toast = useToast();
+const isNewActivityActive = ref(false);
+const activityPicture = ref<File | null>(null);
+let currentUser = ref<User>(store.getters.getUser());
 
-onMounted(async () => {
-});
 
-// function addActivity() {
-//   newActivity.value = {
-//     id: 0,
-//     firstName: '',
-//     lastName: '',
-//     maidenName: '',
-//     age: 0,
-//     gender: '',
-//     email: '',
-//     phone: '',
-//     username: '',
-//     password: '',
-//     isAdmin: false,
-//     image: '',
-//     activityID: 0,
-//     date: '',
-//     name: '',
-//     caloriesBurned: 0,
-//     duration: 0,
-//     activityImage: '',
-//     workout: ''
-//   };
-// }
+const emit = defineEmits(['updateActivities']);
 
-// function saveActivity() {
-//   if (newActivity.value) {
-//     // users.value.unshift(newActivity.value);
-//     newActivity.value = null;
-//   }
-// }
+const activity = reactive({
+    status:'',
+    date:'',
+    caloriesBurned:'',
+    duration:'',
+    workoutType:'',    
+})
+
+const toggleModal = () => {
+  isNewActivityActive.value =!isNewActivityActive.value;
+}
+const handleImageUpload = (event:any) =>{
+  
+  fileHandler.handleImageUpload(activityPicture,event);  
+}
+
+onMounted(()=>{
+  currentUser.value = store.getters.getUser();
+})
+
+
+function saveActivity() {
+
+  if(activityPicture.value !== null){
+    const picture:File = activityPicture.value;
+    const form = new FormData();
+    
+  
+    form.append('status', activity.status);
+    form.append('date',activity.date);
+    form.append('caloriesBurned',String(activity.caloriesBurned));
+    form.append('duration',String(activity.duration));
+    form.append('file', activityPicture.value);
+    form.append('workoutType',String(activity.workoutType));
+    form.append('ownerID',String(currentUser.value.id))
+    form.append('ownerUsername',currentUser.value.username)
+    form.append('ownerPicUrl', currentUser.value.profile_pic); 
+
+    activity.status=''
+    activity.date=''
+    activity.caloriesBurned=''
+    activity.duration=''
+    activity.workoutType=''    
+    activityPicture.value = null;
+
+    createActivityAPI(form).then(()=>{
+      emit('updateActivities');
+      toast.success('Created a New Activity!')
+      toggleModal();
+    });
+
+  }
+
+}
+
 </script>
 
 <template>
-  <button class="button is-primary" @click="">Add Workout</button>
-  <div class="modal is-active">
+  <button class="button is-primary" @click="toggleModal">Add Workout</button>
+  <div v-if="isNewActivityActive" class="modal is-active">
     <div class="modal-background"></div>
     <div class="modal-card">
       <header class="modal-card-head">
         <p class="modal-card-title">Add Activity</p>
-        <button class="delete" aria-label="close" @click=""></button>
+        <button class="delete" aria-label="close" @click="toggleModal"></button>
       </header>
       <section class="modal-card-body">
-        <form @submit.prevent="">
+        <form @submit.prevent="saveActivity()" >
          
           <div class="field">
             <label class="label">Status</label>
             <div class="control">
-              <input class="input" type="text" placeholder="Where did you go? What did you do?" >
+
+              <input class="input" type="text" placeholder="Where did you go? What did you do?" required v-model="activity.status">
             </div>
           </div>
 
@@ -62,14 +97,15 @@ onMounted(async () => {
           <div class="field">
             <label class="label">Date</label>
             <div class="control">
-              <input class="input" type="date" >
+              <input class="input" type="date" required v-model="activity.date">
             </div>
           </div>
 
           <div class="field">
             <label class="label">Calories</label>
             <div class="control">
-              <input class="input" type="text" placeholder="How many calories did you burn?">
+              <!-- v-model="newActivity.caloriesBurned" -->
+              <input class="input" type="text" placeholder="How many calories did you burn?" required v-model="activity.caloriesBurned">
             </div>
           </div>
 
@@ -77,21 +113,23 @@ onMounted(async () => {
           <div class="field">
             <label class="label">Duration</label>
             <div class="control">
-              <input class="input" type="text" placeholder="Duration" />
+              <!--  v-model="newActivity.duration" -->
+              <input class="input" type="text" placeholder="Duration" required v-model="activity.duration">
             </div>
           </div>
 
           <div class="field">
             <label class="label">Picture</label>
             <div class="control">
-              <input class="input" type="file">
+              <input class="input" type="file" required @change="(event)=>{handleImageUpload(event)}">
             </div>
           </div>
 
           <div class="field">
             <label class="label">Workout Type</label>
             <div class="control">
-              <input class="input" type="text" placeholder="Workout type">
+              <!-- v-model="newActivity.name" -->
+              <input class="input" type="text" placeholder="Workout type" required v-model="activity.workoutType">
             </div>
           </div>
 
@@ -146,4 +184,4 @@ onMounted(async () => {
   }
 }
 
-</style>
+</style>@/model/functions/fileUploads
