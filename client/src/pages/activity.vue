@@ -1,10 +1,5 @@
 <script setup lang="ts">
 import AddActivityCard from '@/components/AddCard.vue';
-import { useStore } from "@/viewModel/store";
-
-const { getCurrentUser, removeUser  } = useStore();
-
-const currentUser = getCurrentUser();
 
 </script>
 
@@ -12,11 +7,11 @@ const currentUser = getCurrentUser();
 
     <AddActivityCard />
 
-    <div class="box" v-if="currentUser">
+    <div class="box">
       <article class="media">
         <div class="media-left">
           <figure class="image is-64x64">
-            <img class="image is-rounded" :src="currentUser.image" alt="Image">
+            <img class="image is-rounded"  alt="Image">
           </figure>
         </div>
 
@@ -24,25 +19,25 @@ const currentUser = getCurrentUser();
           <div class="box">
             <div class="media-right">
               <figure class="image is-5by3">
-                <img :src="currentUser.activityImage" alt="Activity Image">
+                <img  alt="Activity Image">
               </figure>
               <div class="media-content">
                 <div class="post-header">
-                  <strong class="post-author">{{ currentUser.firstName }}</strong>
-                  <small class="post-date">{{ currentUser.date }}</small>
+                  <strong class="post-author">{{  }}</strong>
+                  <small class="post-date">{{  }}</small>
                 </div>
                 <div class="post-body">
                   <br>
                 
                   <div class="post-details">
                     <p class="post-description">
-                  <strong>Status: </strong>  {{ currentUser.workout }}
+                  <strong>Status: </strong>  {{  }}
                   </p>
                   <p class="post-description">
-                    <strong>calories Burned:</strong> {{ currentUser.caloriesBurned }} calories!
+                    <strong>calories Burned:</strong> {{  }} calories!
                   </p>
-                    <p><span class="label">Duration:</span> {{ currentUser.duration }}</p>
-                    <p><span class="label">Workout Type:</span> {{ currentUser.name }}</p>
+                    <p><span class="label">Duration:</span> {{  }}</p>
+                    <p><span class="label">Workout Type:</span> {{  }}</p>
                   </div>
                 </div>
               </div>
@@ -50,7 +45,7 @@ const currentUser = getCurrentUser();
           </div>
         </div>
         <div class="media-right">
-          <button class="delete" @click="removeUser"></button> 
+          <button class="delete" @click=""></button> 
         </div>
       </article>
     </div>

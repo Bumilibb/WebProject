@@ -1,28 +1,30 @@
-import { ref } from 'vue';
+import { reactive } from "vue";
 import { type User } from "@/model/users";
+const store = ({
+  state: reactive({
+    user:{} as User,
+    token:''
+  }),
 
-// Store the current user in a reactive variable
-const currentUser = ref<User | null>(null);
+  getters: {
+    getUser(){
+      return store.state.user;
+    },
+    getToken(){
+      return store.state.token;
+    },
+    getPicture(){
+      return store.state.user.pic_url;
+    }
+  },
 
-export function useStore() {
-  // Function to set the current user
-  const setCurrentUser = (user: User) => {
-    currentUser.value = user;
-  };
+  mutations: {
+    authenticateUser(data:User,token:string){
+      store.state.user = data
+      store.state.token = token
+    }
+  },
 
-  // Function to get the current user
-  const getCurrentUser = () => {
-    return currentUser.value;
-  };
+})
 
-  // Function to remove the current user
-  const removeUser = () => {
-    currentUser.value = null;
-  };
-
-  return {
-    setCurrentUser,
-    getCurrentUser,
-    removeUser
-  }
-}
+export default store;

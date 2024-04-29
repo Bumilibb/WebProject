@@ -4,11 +4,16 @@ import { type User, getUsers } from "@/model/users";
 import AddActivityCard from '@/components/AddCard.vue';
 import ActivityCard from '@/components/ActivityCard.vue';
 
+
 const users = ref([] as User[])
 const type = ref('');
 const showModal = ref(false);
 
-users.value = getUsers();
+const fetchUsers = async () => {
+  users.value = await getUsers();
+};
+
+fetchUsers();
 
 const openModal = () => {
   showModal.value = true;
