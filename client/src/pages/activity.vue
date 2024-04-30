@@ -1,54 +1,51 @@
 <script setup lang="ts">
+import { computed, onMounted } from 'vue';
 import AddActivityCard from '@/components/AddCard.vue';
+import * as activityAPI from '@/model/activityFetch';
+import ActivityCard from '@/components/ActivityCard.vue';
+import store from '@/viewModel/store';
+import { ref } from 'vue';
+import type Activity from '@/model/activities';
+import { useRouter } from 'vue-router';
+import { useToast } from 'vue-toastification';
+
+const router = useRouter();
+if(store.getters.getToken() === '')
+  router.push('/login')
+
+const toast = useToast();
+const token = computed(()=>store.getters.getToken());
+const pic_url = computed(()=>store.getters.getPicture());
+let userActivities = ref<Activity[]>([]);
+
+onMounted(()=>{
+  updateActivities();
+})
+
+function updateActivities(){
+  activityAPI.getActivitiesAPI().then(response=>{
+    let activities = response.currentUserActivities;
+    userActivities.value = activities.filter((activity:Activity)=>{
+      return activity.ownerUsername === store.getters.getUser().username;
+    })  
+  })
+
+}
+
+function deleteMyActivity(postID:any){
+  activityAPI.deleteActivityAPI(postID).then((response)=>{
+    if(response.message == 'success'){
+      updateActivities(); 
+      toast('Deleted an actvity')
+    }
+  })
+}
 
 </script>
 
 <template>
-
-    <AddActivityCard />
-
-    <div class="box">
-      <article class="media">
-        <div class="media-left">
-          <figure class="image is-64x64">
-            <img class="image is-rounded"  alt="Image">
-          </figure>
-        </div>
-
-        <div class="media-content">
-          <div class="box">
-            <div class="media-right">
-              <figure class="image is-5by3">
-                <img  alt="Activity Image">
-              </figure>
-              <div class="media-content">
-                <div class="post-header">
-                  <strong class="post-author">{{  }}</strong>
-                  <small class="post-date">{{  }}</small>
-                </div>
-                <div class="post-body">
-                  <br>
-                
-                  <div class="post-details">
-                    <p class="post-description">
-                  <strong>Status: </strong>  {{  }}
-                  </p>
-                  <p class="post-description">
-                    <strong>calories Burned:</strong> {{  }} calories!
-                  </p>
-                    <p><span class="label">Duration:</span> {{  }}</p>
-                    <p><span class="label">Workout Type:</span> {{  }}</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="media-right">
-          <button class="delete" @click=""></button> 
-        </div>
-      </article>
-    </div>
+    <AddActivityCard v-on:update-activities="updateActivities()" />
+    <ActivityCard v-on:delete-activity="deleteMyActivity($event)" :activities ="userActivities" />
 
 
 </template>
@@ -80,4 +77,3 @@ import AddActivityCard from '@/components/AddCard.vue';
   }
 
 </style>
-
