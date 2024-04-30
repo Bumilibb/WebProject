@@ -1,25 +1,39 @@
 <script setup lang="ts">
-import { ref, type PropType, computed } from 'vue';
-import { type User, getUsers } from "@/model/users";
+import { ref, type PropType, computed, onMounted } from 'vue';
+import { type User } from "@/model/users";
 import { useRoute, useRouter } from 'vue-router'
+import { getAllUsers } from '@/services/userServices';
+import store from '@/viewModel/store';
 
 const search = ref('')
-const users = ref([] as User[])
-users.value = getUsers()
+const users = ref([] as User[]);
+const API_URL= 'http://localhost:3000'
+
+onMounted(()=>{
+  getAllUsers().then((response)=>{
+    let requestedUsers = response.users;
+
+    users.value = requestedUsers.filter((user:User)=>{return user.username !== store.getters.getUser().username});
+  });
+})
 
 const filteredUsers = computed(() => {
   return users.value.filter(user => {
     const searchTerm = search.value.toLowerCase();
     return (
     // user.username.toLowerCase().includes(searchTerm) ||
-       user.firstName.toLowerCase().includes(searchTerm) 
+       user.username.toLowerCase().includes(searchTerm) 
     // user.lastName.toLowerCase().includes(searchTerm) ||
     // user.email.toLowerCase().includes(searchTerm)
     );
   });
 });
 
+
 const router = useRouter()
+if(store.getters.getToken() === '')
+  router.push('/login')
+
 
 const openUserProfile = (user: User) => {
   router.push({ name: 'user', params: { id: user.id } })
@@ -32,17 +46,18 @@ const openUserProfile = (user: User) => {
 
 <template>
   <form @submit.prevent="">
-    <input class="input is-primary fa fa-search" type="search" v-model="search" placeholder="Search" >
+    <input class="input is-primary fa fa-search" type="search" v-model="search" placeholder="Search by username" >
   </form>
 
   <div class="user-list">
     <div v-for="user in filteredUsers" :key="user.id" class="card">
       <div class="card-image" @click="openUserProfile(user)">
-        <img class="user-image" :src="user.image" :alt="user.username" />
+        <img class="user-image" :src="`${API_URL}/${user.profile_pic}`" :alt="user.username" />
       </div>
       <div class="card-content">
-        <h3>{{ user.firstName }}</h3>
+        <h3>{{ user.username }}</h3>
         <p>{{ user.email }}</p>
+        <p>{{ `${user.lastName}, ${user.firstName}` }}</p>
       </div>
     </div>
   </div>
@@ -74,8 +89,8 @@ h3 {
 }
 
 img {
-  width: 200px;
-  height: 120px;
+  width:auto;
+  height: 200px;
   object-fit: cover; /* Updated property */
   border-radius: 1rem 1rem 0 0;
 }

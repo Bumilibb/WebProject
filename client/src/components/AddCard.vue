@@ -2,10 +2,10 @@
 import { ref, onMounted, reactive } from 'vue';
 import { type User } from '@/model/users';
 import type Activity from '@/model/activities';
-import * as fileHandler from '@/model/functions/fileUploads';
+import * as fileHandler from '@/utils/functions/fileUploads';
 import store from '@/viewModel/store';
 import { defineEmits } from 'vue';
-import { createActivityAPI } from '@/model/activityFetch';
+import { createActivityAPI } from '@/services/activityServices';
 import { useToast } from 'vue-toastification';
 
 const toast = useToast();
@@ -184,4 +184,4 @@ function saveActivity() {
   }
 }
 
-</style>@/model/functions/fileUploads
+</style>

@@ -1,12 +1,17 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import { loginAPI } from '@/services/userServices';
 import { useToast } from 'vue-toastification';
 import store from '@/viewModel/store';
+import { useRouter } from 'vue-router';
 const toast = useToast();
 const username = ref('')
 const password = ref('')
 
+const router = useRouter()
+
+if (store.getters.getToken() !== '')
+    router.push('/FriendActivity')
 
 function loginUser(){
     
@@ -16,14 +21,15 @@ function loginUser(){
     }).then((response)=>{
 
         if(response.message === 'success'){
-            store.mutations.authenticateUser(response.user, response.token);
+            store.mutations.authenticateUser(response.user, response.authToken,response.user.profile_pic);
             toast.success('Successfully logged in');
+            router.push('/FriendActivity')
+            
         } else {
             toast.error(`${response.message}`)
         }
     })
 }
-
 </script>
 
 

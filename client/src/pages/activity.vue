@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, onMounted } from 'vue';
 import AddActivityCard from '@/components/AddCard.vue';
-import * as activityAPI from '@/model/activityFetch';
+import * as activityServices from '@/services/activityServices';
 import ActivityCard from '@/components/ActivityCard.vue';
 import store from '@/viewModel/store';
 import { ref } from 'vue';
@@ -23,7 +23,7 @@ onMounted(()=>{
 })
 
 function updateActivities(){
-  activityAPI.getActivitiesAPI().then(response=>{
+  activityServices.getActivitiesAPI().then(response=>{
     let activities = response.currentUserActivities;
     userActivities.value = activities.filter((activity:Activity)=>{
       return activity.ownerUsername === store.getters.getUser().username;
@@ -33,7 +33,7 @@ function updateActivities(){
 }
 
 function deleteMyActivity(postID:any){
-  activityAPI.deleteActivityAPI(postID).then((response)=>{
+  activityServices.deleteActivityAPI(postID).then((response)=>{
     if(response.message == 'success'){
       updateActivities(); 
       toast('Deleted an actvity')

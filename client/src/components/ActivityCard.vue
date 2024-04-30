@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { computed } from 'vue';
+import { onMounted, ref,computed } from 'vue';
+import { type User} from "@/model/users";
 import store from '@/viewModel/store';
-import * as activityFetch from '@/model/activityFetch';
+import * as activityServices from '@/services/activityServices'
 
 
 const props = defineProps(["activities"]);
@@ -90,4 +91,3 @@ const emit = defineEmits(['deleteActivity'])
 
 </style>
 
-@/model/activityFetch

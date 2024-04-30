@@ -1,59 +1,31 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { type User, getUsers } from "@/model/users";
+import { onMounted, ref } from 'vue'
+import { type User } from "@/model/users";
 import AddActivityCard from '@/components/AddCard.vue';
 import ActivityCard from '@/components/ActivityCard.vue';
+import { getActivitiesAPI } from '@/services/activityServices';
+import type Activity from '@/model/activities';
+import store from '@/viewModel/store';
+import { useRouter } from 'vue-router';
 
 
-const users = ref([] as User[])
+const router = useRouter();
+if(store.getters.getToken() === '')
+  router.push('/login')
+
+
+const activities = ref([] as Activity[])
 const type = ref('');
 const showModal = ref(false);
 
-const fetchUsers = async () => {
-  users.value = await getUsers();
-};
+onMounted(()=>{
+  getActivitiesAPI().then((response)=>{
+    activities.value = response.currentUserActivities.filter((activity:Activity)=>
+    {return activity.ownerUsername !== store.getters.getUser().username})
+  
+  })
+})
 
-fetchUsers();
-
-const openModal = () => {
-  showModal.value = true;
-};
-
-const closeModal = () => {
-  showModal.value = false;
-};
-
-function removeUser(user: User) {
-  users.value = users.value.filter(u => u.id !== user.id);
-}
-
-const emit = defineEmits(['add-activity']);
-const showForm = ref(false);
-const workout = ref({
-    title: '',
-    date: '',
-    activityImage: '',
-    location: "",
-    duration: 0
-
-});
-
-const addWorkout = () => {
-  emit('add-activity', workout.value);
-  workout.value = {
-    title: '',
-    date: '',
-    activityImage: '',
-    location: '',
-    duration: 0
- 
-  };
-  toggleForm();
-};
-
-function toggleForm() {
-  showForm.value = !showForm.value;
-}
 
 </script>
 
@@ -61,7 +33,7 @@ function toggleForm() {
 
 <AddActivityCard />
 
-<ActivityCard />
+<ActivityCard :activities="activities"/>
 
 </template>
 

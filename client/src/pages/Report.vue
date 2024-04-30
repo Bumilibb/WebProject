@@ -1,4 +1,10 @@
 <script setup lang="ts">
+import { useRouter } from 'vue-router';
+import store from '@/viewModel/store';
+
+const router = useRouter();
+if(store.getters.getToken() === '')
+  router.push('/login')
 
 </script>
 
