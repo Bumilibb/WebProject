@@ -77,6 +77,10 @@ app.post('/login', (req,res)=>{
   res.json({'message':'invalid username or password'})
 });
 
+app.get('/', (req, res) => {
+  res.send('Hello, world!');
+});
+
 app.get('/Activity',(req,res)=>{
   activities = activityController.getAllActivites()
   res.json({'message':'success','currentUserActivities':activities});
