@@ -25,7 +25,7 @@ const upload = multer({storage});
 
 
 const app = express();
-const PORT = process.env.PORT;
+const PORT = process.env.PORT ?? 5174;
 
 const corsOption = {
   origin: 'http://localhost:5173'
