@@ -37,6 +37,8 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 app.use(cors(corsOption));
 app.use(express.static('uploads'));
+// Static files
+app.use(express.static('client/dist'))
 
 app.post('/signup',upload.single('file'), (req,res)=>{
   let user = {profile_pic: req.file.originalname, ...req.body};
