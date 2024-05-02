@@ -1,4 +1,4 @@
-const API_ROOT = "http://localhost:3000";
+const API_ROOT = "http://localhost:10000";
  
  
 export async function createActivityAPI(data:any){
