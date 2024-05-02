@@ -32,6 +32,7 @@
       gender: '',
       email: '',
       telephone: '',
+      username: '',
       isAdmin: ''
 
     })
