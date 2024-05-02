@@ -123,10 +123,6 @@ app.get('/statistics/:ownerID',(req,res)=>{
   res.json({'message':'success','stats':stats});
 })
 
-// Handle SPA
-app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, 'client', 'dist', 'index.html'));
-});
 
 app.listen(PORT, () => {
   console.log(`App listening at http://localhost:${PORT}`);
