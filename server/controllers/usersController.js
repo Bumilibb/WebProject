@@ -1,9 +1,9 @@
 const fs = require('fs');
 const UPLOAD_FOLDER = process.cwd() + '\\uploads\\';
-const activityController = require('./activity');
+const activityController = require('./activityController');
 
 function getAll(){
-    const data = fs.readFileSync('users.json');
+    const data = fs.readFileSync('data.json');
     const db_json = JSON.parse(data);
 
     if ("users" in db_json == false)
@@ -14,7 +14,7 @@ function getAll(){
 
 function save(jsonData){
     jsonString = JSON.stringify(jsonData);
-    fs.writeFileSync('users.json',jsonString, 'utf-8');
+    fs.writeFileSync('data.json',jsonString, 'utf-8');
 }
 
 function add(user){

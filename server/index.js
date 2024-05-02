@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 require('dotenv').config() 
-const users = require('./controllers/userController.js');
+const users = require('./controllers/usersController.js');
 const path = require('path');
 const jwt = require('jsonwebtoken');
 const activityController = require('./controllers/activityController.js');

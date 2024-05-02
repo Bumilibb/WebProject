@@ -1,4 +1,4 @@
-const activityController = require('./activity');
+const activityController = require('./activityController');
 
 function getStatistics(ownerID){
     const activities = activityController.getAllActivites()
