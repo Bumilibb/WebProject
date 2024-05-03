@@ -1,6 +1,6 @@
 import type { User } from "@/model/users";
 
-const API_ROOT = "http://localhost:3000";
+const API_ROOT = "https://draftfinal.onrender.com";
  
 
 export async function registerUser(data:any){
@@ -35,13 +35,15 @@ export async function loginAPI(loginCredentials:any){
 }
 
 export async function getAllUsers(){
-    let response = await fetch(`${API_ROOT}/search`);
+    let response = await fetch(`${API_ROOT}/user`,{
+        method:"POST"
+    });
 
     return response.json();
 }
 
 export async function updateUserByID(userID:number,userData:any){
-    let response = await fetch(`${API_ROOT}/update/user/${userID}`,{
+    let response = await fetch(`${API_ROOT}/user/update/${userID}`,{
         method:"POST",
         headers:{
             'Content-Type':'application/json'
@@ -53,7 +55,7 @@ export async function updateUserByID(userID:number,userData:any){
 }
 
 export async function deleteUser(userID:number) {
-    let response = await fetch(`${API_ROOT}/delete/user/${userID}`,{
+    let response = await fetch(`${API_ROOT}/user/delete/${userID}`,{
         method:"POST",
     });
 
