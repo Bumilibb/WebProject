@@ -6,8 +6,9 @@
   "license": "ISC",
   "scripts": {
     "build": "npm i --production && cd client && npm i && npm run build",
-    "start": "cd server && node index.js",
-    "dev": "cd server && nodemon index.js --watch server/"
+    "start": "nodemon index.js",
+    "dev": "nodemon index.js --watch server/",
+    "render-build":"npm install --prefix ./client && npm run build --prefix ./client && npm install"
     },
   "dependencies": {
     "body-parser": "^1.20.2",

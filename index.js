@@ -11,7 +11,7 @@ const authRouter = require('./routes/authRoutes.js');
 const statisticRouter=  require('./routes/statisticRoute.js')
 
 const app = express();
-const PORT = process.env.PORT;
+const PORT = process.env.PORT ?? 3000;
 
 const corsOption = {
   origin: 'http://localhost:5173'
