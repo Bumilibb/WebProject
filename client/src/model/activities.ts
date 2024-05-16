@@ -9,6 +9,7 @@ export default interface Activity {
     ownerID?:string,
     ownerUsername?:string,
     ownerPicUrl?:string,
+    tags?:string
 }
   
   

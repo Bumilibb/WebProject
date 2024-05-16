@@ -4,6 +4,8 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import Toast, { POSITION, type PluginOptions } from "vue-toastification";
+import Oruga from '@oruga-ui/oruga-next';
+import '@oruga-ui/theme-oruga/dist/scss/oruga-full.scss';
 // Import the CSS or use your own!
 import "vue-toastification/dist/index.css";
 
@@ -21,3 +23,6 @@ app.use(router)
 app.use(Toast, options);
 
 app.mount('#app')
+
+app.use(Oruga); 
+app.mount('#app');

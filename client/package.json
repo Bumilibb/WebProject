@@ -17,7 +17,10 @@
     "vue": "^3.4.15",
     "vue-router": "^4.3.0",
     "vue-toastification": "^2.0.0-rc.5",
-    "webproject": "file:.."
+    "webproject": "file:..",
+    "vue3-simple-typeahead": "^1.0.0",
+    "@oruga-ui/oruga-next": "^0.8.9",
+    "@oruga-ui/theme-oruga": "^0.2.2"
   },
   "devDependencies": {
     "@tsconfig/node20": "^20.1.2",
@@ -29,7 +32,8 @@
     "typescript": "~5.3.0",
     "unplugin-vue-router": "^0.8.4",
     "vite": "^5.0.11",
-    "vue-tsc": "^1.8.27"
+    "vue-tsc": "^1.8.27",
+    "sass": "^1.77.1"
   },
   "description": "This template should help get you started developing with Vue 3 in Vite.",
   "main": "index.js",
